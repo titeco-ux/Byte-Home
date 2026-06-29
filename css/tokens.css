@@ -1,0 +1,87 @@
+/* ==========================================================================
+   ByteNana Design System — DESIGN TOKENS
+   The single source of truth. Re-skin a whole site by editing only this file.
+   ========================================================================== */
+:root {
+  /* --- Brand color -------------------------------------------------------- */
+  --color-primary:       #F2B705;            /* brand yellow — CTAs, accents, highlights */
+  --color-primary-dark:  #D4A004;            /* hover state for primary buttons */
+  --color-primary-light: #F5C84A;            /* lighter tint, use sparingly */
+  --color-primary-glow:  rgba(242, 183, 5, 0.15); /* focus-ring / glow fill */
+
+  /* --- Backgrounds (dark, layered: bg → surface → surface-2 → surface-3) -- */
+  --color-bg:        #0F1112;                /* page base */
+  --color-surface:   #161A1C;                /* elevated surface, navbar */
+  --color-surface-2: #1E2325;                /* cards, inputs */
+  --color-surface-3: #252A2D;                /* deeper elevation */
+  --color-light:     #FCFCFC;                /* the off-white "inverted section" background */
+
+  /* --- Text --------------------------------------------------------------- */
+  --color-text:       #FCFCFC;
+  --color-text-muted: rgba(252, 252, 252, 0.55);  /* body copy */
+  --color-text-dim:   rgba(252, 252, 252, 0.35);  /* placeholders, legal, labels */
+
+  /* --- Borders ------------------------------------------------------------ */
+  --color-border:       rgba(252, 252, 252, 0.08);
+  --color-border-hover: rgba(242, 183, 5, 0.35);
+
+  /* On light (#FCFCFC) sections, swap the dark-on-light equivalents below.
+     Reusable so light-section overrides don't hard-code rgba everywhere. */
+  --on-light-text:      #0F1112;
+  --on-light-muted:     rgba(15, 17, 18, 0.65);
+  --on-light-dim:       rgba(15, 17, 18, 0.35);
+  --on-light-border:    rgba(15, 17, 18, 0.10);
+
+  /* --- Typography --------------------------------------------------------- */
+  --font-heading: 'IBM Plex Sans', sans-serif;
+  --font-body:    'Inter', sans-serif;
+
+  --text-xs:   0.75rem;    /* 12px — eyebrows, labels, legal */
+  --text-sm:   0.875rem;   /* 14px — card body, nav, footer */
+  --text-base: 1rem;       /* 16px — default body, inputs */
+  --text-lg:   1.125rem;   /* 18px — section intros, subheads */
+  --text-xl:   1.25rem;    /* 20px — h3, card/step titles */
+  --text-2xl:  1.5rem;     /* 24px — case h3, pain close */
+  --text-3xl:  1.875rem;   /* 30px — h2 mobile */
+  --text-4xl:  2.25rem;    /* 36px — h1 mobile, stat numbers */
+  --text-5xl:  3rem;       /* 48px — h1 tablet */
+  --text-6xl:  3.75rem;    /* 60px — h1 desktop */
+
+  /* --- Spacing — 8pt grid ------------------------------------------------- */
+  --space-1:  0.25rem;   /* 4px  */
+  --space-2:  0.5rem;    /* 8px  */
+  --space-3:  0.75rem;   /* 12px */
+  --space-4:  1rem;      /* 16px */
+  --space-5:  1.25rem;   /* 20px */
+  --space-6:  1.5rem;    /* 24px */
+  --space-8:  2rem;      /* 32px */
+  --space-10: 2.5rem;    /* 40px */
+  --space-12: 3rem;      /* 48px */
+  --space-16: 4rem;      /* 64px */
+  --space-20: 5rem;      /* 80px */
+  --space-24: 6rem;      /* 96px — default section padding */
+  --space-32: 8rem;      /* 128px */
+
+  /* --- Layout ------------------------------------------------------------- */
+  --container-max:    1200px;
+  --container-narrow: 760px;
+  --navbar-height:    72px;
+
+  /* --- Radius ------------------------------------------------------------- */
+  --radius-sm: 4px;    /* small tags */
+  --radius:    8px;    /* buttons, inputs */
+  --radius-lg: 16px;   /* cards, navbar, modals */
+  --radius-xl: 24px;   /* available */
+
+  /* --- Shadows ------------------------------------------------------------ */
+  --shadow-sm:      0 1px 3px rgba(0, 0, 0, 0.4);
+  --shadow-md:      0 4px 16px rgba(0, 0, 0, 0.5);
+  --shadow-lg:      0 8px 32px rgba(0, 0, 0, 0.6);
+  --shadow-primary: 0 4px 24px rgba(242, 183, 5, 0.25);
+
+  /* --- Motion ------------------------------------------------------------- */
+  --ease-out:    cubic-bezier(0.22, 1, 0.36, 1);  /* the signature spring-out ease */
+  --t-fast:      0.2s;
+  --t-base:      0.25s;
+  --t-slow:      0.6s;
+}

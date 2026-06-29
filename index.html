@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ByteNana — AI-Native Nearshore Engineering for US Startups & Agencies</title>
+  <meta name="description" content="An AI-native nearshore engineering studio — based in Brazil, built for US startups and agencies. High-performance engineering and dedicated teams that build, launch, and accelerate your digital products, in your stack and your timezone.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/page.css">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header id="navbar">
+    <div class="container navbar-inner">
+      <a href="#hero" class="logo" aria-label="ByteNana home">
+        <img src="assets/images/logo-Bn.svg" alt="" class="logo-mark">
+        <span class="logo-byte">Byte</span><span class="logo-nana">Nana</span>
+      </a>
+      <nav aria-label="Main navigation">
+        <ul class="nav-links">
+          <li><a href="#what-we-do">What we do</a></li>
+          <li><a href="#how-we-engage">How we engage</a></li>
+          <li><a href="#work">Work</a></li>
+          <li><a href="#reviews">Reviews</a></li>
+          <li><a href="#book" class="btn btn-primary btn-sm js-book">Book a call</a></li>
+        </ul>
+      </nav>
+      <button id="menu-toggle" class="menu-toggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+      <button id="nav-toggle" class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">
+        <iconify-icon class="nav-toggle__open" icon="mdi:menu"></iconify-icon>
+        <iconify-icon class="nav-toggle__close" icon="mdi:close"></iconify-icon>
+      </button>
+    </div>
+    <nav id="mobile-menu" class="mobile-menu" aria-label="Mobile navigation">
+      <ul>
+        <li><a href="#what-we-do">What we do</a></li>
+        <li><a href="#how-we-engage">How we engage</a></li>
+        <li><a href="#work">Work</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#book" class="js-book">Book a call</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- 01 — HERO -->
+    <section id="hero" class="section-hero">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <p class="eyebrow">AI-native nearshore engineering</p>
+          <h1 class="hero-title">
+            <span class="hero-title__static">We don't just build software.</span>
+            <span class="rotator">
+              <span class="rotator__list">
+                <span class="rotator__item">We build businesses.</span>
+                <span class="rotator__item">We build products.</span>
+                <span class="rotator__item">We build teams.</span>
+                <span class="rotator__item" aria-hidden="true">We build businesses.</span>
+              </span>
+            </span>
+          </h1>
+          <p class="hero-subhead">An AI-native nearshore engineering studio — based in Brazil, built for US startups and agencies, from MVP to enterprise.</p>
+          <div class="hero-ctas">
+            <a href="#book" class="btn btn-primary js-book">Book a discovery call</a>
+            <a href="#work" class="btn btn-secondary">See our work ↓</a>
+          </div>
+          <div class="trust-strip">
+            <span>★ 5.0 on Clutch</span>
+            <span class="sep">·</span>
+            <span>Top Rated Plus on Upwork</span>
+            <span class="sep">·</span>
+            <span>119 projects delivered</span>
+          </div>
+        </div>
+        <div class="cta-hub hero-hub" data-globe data-radius="0.46" data-dash="alt">
+          <canvas class="cta-hub__links" aria-hidden="true"></canvas>
+          <span class="hub-node hub-node--center" data-lon="0" data-lat="0"><span class="hub-node__depth"><span class="hub-node__hover"><span class="hub-node__dot"><iconify-icon icon="mdi:account"></iconify-icon></span></span></span></span>
+          <span class="hub-node" data-lon="-45" data-lat="35"><span class="hub-node__depth"><span class="hub-node__hover"><span class="hub-node__dot"><iconify-icon icon="mdi:chip"></iconify-icon></span></span></span></span>
+          <span class="hub-node" data-lon="40" data-lat="32"><span class="hub-node__depth"><span class="hub-node__hover"><span class="hub-node__dot"><iconify-icon icon="mdi:cloud-outline"></iconify-icon></span></span></span></span>
+          <span class="hub-node" data-lon="58" data-lat="-8"><span class="hub-node__depth"><span class="hub-node__hover"><span class="hub-node__dot"><iconify-icon icon="mdi:code-tags"></iconify-icon></span></span></span></span>
+          <span class="hub-node" data-lon="-58" data-lat="8"><span class="hub-node__depth"><span class="hub-node__hover"><span class="hub-node__dot"><iconify-icon icon="mdi:cellphone"></iconify-icon></span></span></span></span>
+          <span class="hub-node" data-lon="-18" data-lat="-42"><span class="hub-node__depth"><span class="hub-node__hover"><span class="hub-node__dot"><iconify-icon icon="mdi:database"></iconify-icon></span></span></span></span>
+          <span class="hub-node hub-node--sm" data-lon="-32" data-lat="66"><span class="hub-node__depth"><span class="hub-node__hover"><span class="hub-node__dot"><iconify-icon icon="mdi:robot-outline"></iconify-icon></span></span></span></span>
+          <span class="hub-node hub-node--sm" data-lon="78" data-lat="52"><span class="hub-node__depth"><span class="hub-node__hover"><span class="hub-node__dot"><iconify-icon icon="mdi:api"></iconify-icon></span></span></span></span>
+          <span class="hub-node hub-node--sm" data-lon="82" data-lat="-38"><span class="hub-node__depth"><span class="hub-node__hover"><span class="hub-node__dot"><iconify-icon icon="mdi:source-branch"></iconify-icon></span></span></span></span>
+          <span class="hub-node hub-node--sm" data-lon="-72" data-lat="-56"><span class="hub-node__depth"><span class="hub-node__hover"><span class="hub-node__dot"><iconify-icon icon="mdi:server"></iconify-icon></span></span></span></span>
+          <span class="hub-node hub-node--sm" data-lon="-95" data-lat="22"><span class="hub-node__depth"><span class="hub-node__hover"><span class="hub-node__dot"><iconify-icon icon="mdi:react"></iconify-icon></span></span></span></span>
+          <span class="hub-node hub-node--center" data-lon="140" data-lat="-5"><span class="hub-node__depth"><span class="hub-node__hover"><span class="hub-node__dot"><iconify-icon icon="mdi:account"></iconify-icon></span></span></span></span>
+          <span class="hub-node" data-lon="115" data-lat="25"><span class="hub-node__depth"><span class="hub-node__hover"><span class="hub-node__dot"><iconify-icon icon="mdi:docker"></iconify-icon></span></span></span></span>
+          <span class="hub-node" data-lon="165" data-lat="20"><span class="hub-node__depth"><span class="hub-node__hover"><span class="hub-node__dot"><iconify-icon icon="mdi:language-python"></iconify-icon></span></span></span></span>
+          <span class="hub-node" data-lon="120" data-lat="-35"><span class="hub-node__depth"><span class="hub-node__hover"><span class="hub-node__dot"><iconify-icon icon="mdi:nodejs"></iconify-icon></span></span></span></span>
+          <span class="hub-node" data-lon="170" data-lat="-30"><span class="hub-node__depth"><span class="hub-node__hover"><span class="hub-node__dot"><iconify-icon icon="mdi:kubernetes"></iconify-icon></span></span></span></span>
+          <span class="hub-node hub-node--sm" data-lon="150" data-lat="52"><span class="hub-node__depth"><span class="hub-node__hover"><span class="hub-node__dot"><iconify-icon icon="mdi:figma"></iconify-icon></span></span></span></span>
+          <span class="hub-node hub-node--sm" data-lon="-130" data-lat="-20"><span class="hub-node__depth"><span class="hub-node__hover"><span class="hub-node__dot"><iconify-icon icon="mdi:language-typescript"></iconify-icon></span></span></span></span>
+          <span class="hub-node hub-node--sm" data-lon="200" data-lat="10"><span class="hub-node__depth"><span class="hub-node__hover"><span class="hub-node__dot"><iconify-icon icon="mdi:github"></iconify-icon></span></span></span></span>
+          <span class="hub-node hub-node--sm" data-lon="230" data-lat="-40"><span class="hub-node__depth"><span class="hub-node__hover"><span class="hub-node__dot"><iconify-icon icon="mdi:angular"></iconify-icon></span></span></span></span>
+          <span class="hub-node hub-node--sm" data-lon="255" data-lat="35"><span class="hub-node__depth"><span class="hub-node__hover"><span class="hub-node__dot"><iconify-icon icon="mdi:graphql"></iconify-icon></span></span></span></span>
+          <span class="hub-node hub-node--sm" data-lon="290" data-lat="-12"><span class="hub-node__depth"><span class="hub-node__hover"><span class="hub-node__dot"><iconify-icon icon="mdi:redis"></iconify-icon></span></span></span></span>
+          <span class="hub-node hub-node--sm" data-lon="-150" data-lat="55"><span class="hub-node__depth"><span class="hub-node__hover"><span class="hub-node__dot"><iconify-icon icon="mdi:linux"></iconify-icon></span></span></span></span>
+          <span class="hub-node hub-node--sm" data-lon="30" data-lat="-62"><span class="hub-node__depth"><span class="hub-node__hover"><span class="hub-node__dot"><iconify-icon icon="mdi:firebase"></iconify-icon></span></span></span></span>
+          <span class="hub-node hub-node--sm" data-lon="95" data-lat="62"><span class="hub-node__depth"><span class="hub-node__hover"><span class="hub-node__dot"><iconify-icon icon="mdi:vuejs"></iconify-icon></span></span></span></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 02 — TRUST BAR -->
+    <section id="trust" class="section-trust">
+      <div class="container">
+        <p class="section-label" style="text-align:center">Powering digital transformation for companies around the world</p>
+        <div class="logo-row" aria-label="Client logos">
+          <span class="logo-chip">Structure IQ</span>
+          <span class="logo-chip">Hawkeye</span>
+          <span class="logo-chip">Findly</span>
+          <span class="logo-chip">Genostories</span>
+          <span class="logo-chip">Itri Corp</span>
+          <span class="logo-chip">IDinsight</span>
+        </div>
+        <div class="trust-bar">
+          <div class="trust-rating" role="img" aria-label="Top Rated Plus on Upwork">
+            <span class="trust-stars" aria-hidden="true">★★★★★</span>
+            <span class="trust-score">Top&nbsp;Rated&nbsp;Plus</span>
+            <span class="trust-on">on Upwork</span>
+          </div>
+          <div class="trust-stat"><span class="trust-num">100%</span><span class="trust-cap">Job Success</span></div>
+          <div class="trust-stat"><span class="trust-num">5.0</span><span class="trust-cap">on Clutch</span></div>
+          <div class="trust-stat"><span class="trust-num">119</span><span class="trust-cap">Projects delivered</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03 — WHAT WE DO -->
+    <section id="what-we-do" class="section-mesh">
+      <div class="container">
+        <p class="section-label">03 — What we do</p>
+        <h2>Full-stack expertise, one partner.</h2>
+        <div class="card-grid card-grid--2-4">
+          <div class="card card--invert">
+            <span class="card-icon" aria-hidden="true"><iconify-icon icon="mdi:code-braces"></iconify-icon></span>
+            <h3>Custom Software Development</h3>
+            <p>End-to-end web apps and system architecture, built to scale.</p>
+          </div>
+          <div class="card card--invert">
+            <span class="card-icon" aria-hidden="true"><iconify-icon icon="mdi:cellphone"></iconify-icon></span>
+            <h3>Mobile App Engineering</h3>
+            <p>High-performance iOS and Android — native or cross-platform with Flutter and React Native.</p>
+          </div>
+          <div class="card card--invert">
+            <span class="card-icon" aria-hidden="true"><iconify-icon icon="mdi:palette-outline"></iconify-icon></span>
+            <h3>UX/UI &amp; Product Design</h3>
+            <p>Turning complex ideas into intuitive, ship-ready digital experiences.</p>
+          </div>
+          <div class="card card--invert">
+            <span class="card-icon" aria-hidden="true"><iconify-icon icon="mdi:robot-outline"></iconify-icon></span>
+            <h3>AI Engineering</h3>
+            <p>Spec-driven AI features and agents on our own framework — RAG, LLMs, and automation.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04 — WHERE DO YOU NEED US? -->
+    <section id="chooser" class="section--light">
+      <div class="container">
+        <p class="section-label">04 — Where do you need us?</p>
+        <h2>Where do you need us?</h2>
+        <p class="section-intro">Two ways to bring senior Brazilian engineers onto your project — same talent bar, either way.</p>
+        <div class="chooser-grid">
+          <a href="#how-we-engage" class="chooser-card js-engage" data-tab="staff">
+            <span class="chooser-eyebrow">IT Staffing · Staff Augmentation</span>
+            <h3>Staff for your team</h3>
+            <p>Already have a team, a roadmap, and a process? We embed vetted senior engineers straight into your squad — your tools, your standups, your direction.</p>
+            <span class="chooser-link">See how staffing works →</span>
+          </a>
+          <a href="#how-we-engage" class="chooser-card js-engage" data-tab="product">
+            <span class="chooser-eyebrow">Product Teams · End-to-end delivery</span>
+            <h3>A team for your product</h3>
+            <p>Need something built? We assemble a full product team that owns delivery from discovery to launch — for your own product, or for your clients.</p>
+            <span class="chooser-link">See how product teams work →</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05 — HOW WE ENGAGE (tabbed) -->
+    <section id="how-we-engage" class="section-engage">
+      <div class="container">
+        <p class="section-label">05 — How we engage</p>
+        <h2>Two models. One talent bar.</h2>
+        <p class="section-intro">However you bring us in, every engineer clears the same bar: 5+ years in production, C1 English, architecture-capable, vetted before they touch your repo.</p>
+
+        <div class="engage">
+          <div class="engage-tablist" role="tablist" aria-label="Engagement models">
+            <button class="engage-tab is-active" role="tab" id="engtab-staff" aria-controls="engpanel-staff" aria-selected="true" data-tab="staff">Staff for your team</button>
+            <button class="engage-tab" role="tab" id="engtab-product" aria-controls="engpanel-product" aria-selected="false" data-tab="product">A team for your product</button>
+          </div>
+
+          <!-- TAB 1 — Staff Augmentation -->
+          <div class="engage-panel is-active" role="tabpanel" id="engpanel-staff" aria-labelledby="engtab-staff" data-panel="staff">
+            <div class="engage-head">
+              <h3>Senior engineers, embedded in your team.</h3>
+              <p>For teams that already have direction and process — and just need senior capacity, fast.</p>
+            </div>
+            <div class="engage-points">
+              <div class="card"><h4>What you get</h4><p>Vetted senior engineers who plug into your stack, standups, and sprints. You direct the day-to-day; we deliver inside your cadence.</p></div>
+              <div class="card"><h4>Real-time, not offshore</h4><p>Full US-hours overlap from Brazil. Same-day collaboration, not async hand-offs.</p></div>
+              <div class="card"><h4>Scale on demand</h4><p>Add or drop engineers as projects flex, without breaking delivery.</p></div>
+              <div class="card"><h4>Agency-ready</h4><p>White-label by default. Your client sees your team; they never see us.</p></div>
+            </div>
+            <div class="engage-foot">
+              <p class="engage-how"><strong>How it works:</strong> a short matching call → engineers onboarded into your repo and tools in days → they ship in your sprint cadence with clear reporting.</p>
+              <p class="engage-price"><strong>Pricing:</strong> from ~$32/hr per embedded engineer; senior/architect at $50–60/hr — month-to-month or committed.</p>
+              <a href="#book" class="btn btn-primary js-book">Book a discovery call</a>
+            </div>
+          </div>
+
+          <!-- TAB 2 — Product Teams -->
+          <div class="engage-panel" role="tabpanel" id="engpanel-product" aria-labelledby="engtab-product" data-panel="product" hidden>
+            <div class="engage-head">
+              <h3>A full product team that owns the outcome.</h3>
+              <p>For founders building an MVP into a real product — and for agencies who need a team to deliver for their clients.</p>
+            </div>
+            <div class="engage-points">
+              <div class="card"><h4>What you get</h4><p>A self-managed pod (tech lead, engineers, and design) that takes the vision from discovery to launch and owns delivery end to end.</p></div>
+              <div class="card"><h4>AI-accelerated scoping</h4><p>Spec-driven discovery on our own AI framework, so the work is scoped precisely before a line of code.</p></div>
+              <div class="card"><h4>Built to scale</h4><p>Architecture designed to grow from 100 to 1M users.</p></div>
+              <div class="card"><h4>Transparent by default</h4><p>Weekly demos, clear milestones, no black boxes. White-label delivery for agencies.</p></div>
+            </div>
+            <div class="engage-foot">
+              <p class="engage-how"><strong>How it works:</strong> discovery → we assemble the right team → we build in sprints with demos and milestones → launch and iterate.</p>
+              <p class="engage-price"><strong>Pricing:</strong> fixed-price by scope, or a monthly team retainer.</p>
+              <a href="#book" class="btn btn-primary js-book">Book a discovery call</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 06 — WHY BYTENANA -->
+    <section id="why" class="section--light">
+      <div class="container">
+        <p class="section-label">06 — Why ByteNana</p>
+        <h2>In your stack. In your timezone. On your team.</h2>
+        <p class="section-intro">We've removed the friction from tech outsourcing by focusing on the four things that matter most.</p>
+        <div class="card-grid card-grid--2-4">
+          <div class="card"><h3>Real-time, not offshore</h3><p>Brazil sits in full overlap with US business hours. Same-day collaboration in your standup — not async hand-offs twelve hours behind.</p></div>
+          <div class="card"><h3>Consultants first, developers second</h3><p>A small, hand-picked team that solves the business problem, not just closes the ticket.</p></div>
+          <div class="card"><h3>Built to scale</h3><p>Architecture designed to grow from 100 to 1M users, delivered in agile sprints with constant iteration.</p></div>
+          <div class="card"><h3>Transparent by default</h3><p>No black boxes. Full visibility into the work, the progress, and every line of code.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 07 — THE TALENT BAR -->
+    <section id="talent" class="section-talent">
+      <div class="container talent-grid">
+        <div class="talent-content">
+          <p class="section-label">07 — The talent bar</p>
+          <h2>Top Brazilian talent — and we can prove it.</h2>
+          <p class="section-intro">"Senior" gets thrown around a lot. Here's exactly what it means at ByteNana — every engineer, no exceptions:</p>
+          <ul class="talent-list">
+            <li><span class="talent-check" aria-hidden="true">✓</span><span>5+ years building production software</span></li>
+            <li><span class="talent-check" aria-hidden="true">✓</span><span>C1-level English, fully client-facing</span></li>
+            <li><span class="talent-check" aria-hidden="true">✓</span><span>Passes our technical assessment before they ever touch your repo</span></li>
+            <li><span class="talent-check" aria-hidden="true">✓</span><span>Architecture-capable — consultants first, coders second</span></li>
+          </ul>
+          <p class="talent-closer">We hire from the top of the LATAM talent pool. We don't send you people to manage into shape; we send you people you'd have hired yourself.</p>
+        </div>
+        <div class="hero-globe talent-globe">
+          <canvas class="hero-map" aria-hidden="true"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <!-- 08 — TECH STACK (orbit tabs) -->
+    <section id="tech-stack" class="section-techstack section--light">
+      <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+        <symbol id="ic-frontend" viewBox="0 0 24 24"><path d="M21 2H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h7v2H8v2h8v-2h-2v-2h7c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H3V4h18v12z"/></symbol>
+        <symbol id="ic-backend" viewBox="0 0 24 24"><path d="M2 20h20v-4H2v4zm2-3h2v2H4v-2zM2 4v4h20V4H2zm4 3H4V5h2v2zm-4 7h20v-4H2v4zm2-3h2v2H4v-2z"/></symbol>
+        <symbol id="ic-data" viewBox="0 0 24 24"><path d="M4 9h4v11H4V9zm6-5h4v16h-4V4zm6 8h4v8h-4v-8z"/></symbol>
+        <symbol id="ic-cloud" viewBox="0 0 24 24"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/></symbol>
+        <symbol id="ic-mobile" viewBox="0 0 24 24"><path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/></symbol>
+        <symbol id="ic-ai" viewBox="0 0 24 24"><path d="M15 9H9v6h6V9zm-2 4h-2v-2h2v2zm8-2V9h-2V7c0-1.1-.9-2-2-2h-2V3h-2v2h-2V3H9v2H7c-1.1 0-2 .9-2 2v2H3v2h2v2H3v2h2v2c0 1.1.9 2 2 2h2v2h2v-2h2v2h2v-2h2c1.1 0 2-.9 2-2v-2h2v-2h-2v-2h2zm-4 6H7V7h10v10z"/></symbol>
+      </svg>
+      <div class="container">
+        <h2>Your vision. Our tech stack.</h2>
+        <p class="section-intro">From high-performance mobile apps to complex cloud architectures, we bring the right tools to solve your unique business challenges.</p>
+        <div class="stack-tabs">
+          <div class="stack-tablist" role="tablist" aria-label="Tech stack categories">
+            <button class="stack-tab is-active" role="tab" aria-selected="true" id="tab-frontend" aria-controls="panel-frontend"><svg class="stack-tab__ic" aria-hidden="true"><use href="#ic-frontend"/></svg><span>Frontend</span></button>
+            <button class="stack-tab" role="tab" aria-selected="false" id="tab-backend" aria-controls="panel-backend"><svg class="stack-tab__ic" aria-hidden="true"><use href="#ic-backend"/></svg><span>Backend</span></button>
+            <button class="stack-tab" role="tab" aria-selected="false" id="tab-data" aria-controls="panel-data"><svg class="stack-tab__ic" aria-hidden="true"><use href="#ic-data"/></svg><span>Data &amp; ML</span></button>
+            <button class="stack-tab" role="tab" aria-selected="false" id="tab-cloud" aria-controls="panel-cloud"><svg class="stack-tab__ic" aria-hidden="true"><use href="#ic-cloud"/></svg><span>Cloud &amp; DevOps</span></button>
+            <button class="stack-tab" role="tab" aria-selected="false" id="tab-mobile" aria-controls="panel-mobile"><svg class="stack-tab__ic" aria-hidden="true"><use href="#ic-mobile"/></svg><span>Mobile</span></button>
+            <button class="stack-tab" role="tab" aria-selected="false" id="tab-ai" aria-controls="panel-ai"><svg class="stack-tab__ic" aria-hidden="true"><use href="#ic-ai"/></svg><span>AI</span></button>
+          </div>
+          <div class="stack-panels">
+            <div class="stack-panel is-active" role="tabpanel" id="panel-frontend" aria-labelledby="tab-frontend">
+              <div class="stack-orbit"><svg class="stack-panel__ic" aria-hidden="true"><use href="#ic-frontend"/></svg><div class="orbit__ring">
+                <span class="orbit__slot" style="--a:0deg"><span class="orbit__label">React</span></span>
+                <span class="orbit__slot" style="--a:90deg"><span class="orbit__label">Next.js</span></span>
+                <span class="orbit__slot" style="--a:180deg"><span class="orbit__label">JavaScript</span></span>
+                <span class="orbit__slot" style="--a:270deg"><span class="orbit__label">TypeScript</span></span>
+              </div></div>
+            </div>
+            <div class="stack-panel" role="tabpanel" id="panel-backend" aria-labelledby="tab-backend" hidden>
+              <div class="stack-orbit"><svg class="stack-panel__ic" aria-hidden="true"><use href="#ic-backend"/></svg><div class="orbit__ring">
+                <span class="orbit__slot" style="--a:0deg"><span class="orbit__label">Node.js</span></span>
+                <span class="orbit__slot" style="--a:120deg"><span class="orbit__label">Java / Spring</span></span>
+                <span class="orbit__slot" style="--a:240deg"><span class="orbit__label">Express</span></span>
+              </div></div>
+            </div>
+            <div class="stack-panel" role="tabpanel" id="panel-data" aria-labelledby="tab-data" hidden>
+              <div class="stack-orbit"><svg class="stack-panel__ic" aria-hidden="true"><use href="#ic-data"/></svg><div class="orbit__ring">
+                <span class="orbit__slot" style="--a:0deg"><span class="orbit__label">Python</span></span>
+                <span class="orbit__slot" style="--a:60deg"><span class="orbit__label">PostgreSQL</span></span>
+                <span class="orbit__slot" style="--a:120deg"><span class="orbit__label">PostGIS</span></span>
+                <span class="orbit__slot" style="--a:180deg"><span class="orbit__label">Spark</span></span>
+                <span class="orbit__slot" style="--a:240deg"><span class="orbit__label">Airflow</span></span>
+                <span class="orbit__slot" style="--a:300deg"><span class="orbit__label">Snowflake</span></span>
+              </div></div>
+            </div>
+            <div class="stack-panel" role="tabpanel" id="panel-cloud" aria-labelledby="tab-cloud" hidden>
+              <div class="stack-orbit"><svg class="stack-panel__ic" aria-hidden="true"><use href="#ic-cloud"/></svg><div class="orbit__ring">
+                <span class="orbit__slot" style="--a:0deg"><span class="orbit__label">AWS</span></span>
+                <span class="orbit__slot" style="--a:72deg"><span class="orbit__label">GCP</span></span>
+                <span class="orbit__slot" style="--a:144deg"><span class="orbit__label">Azure</span></span>
+                <span class="orbit__slot" style="--a:216deg"><span class="orbit__label">Docker</span></span>
+                <span class="orbit__slot" style="--a:288deg"><span class="orbit__label">Kubernetes</span></span>
+              </div></div>
+            </div>
+            <div class="stack-panel" role="tabpanel" id="panel-mobile" aria-labelledby="tab-mobile" hidden>
+              <div class="stack-orbit"><svg class="stack-panel__ic" aria-hidden="true"><use href="#ic-mobile"/></svg><div class="orbit__ring">
+                <span class="orbit__slot" style="--a:0deg"><span class="orbit__label">Flutter</span></span>
+                <span class="orbit__slot" style="--a:180deg"><span class="orbit__label">React Native</span></span>
+              </div></div>
+            </div>
+            <div class="stack-panel" role="tabpanel" id="panel-ai" aria-labelledby="tab-ai" hidden>
+              <div class="stack-orbit"><svg class="stack-panel__ic" aria-hidden="true"><use href="#ic-ai"/></svg><div class="orbit__ring">
+                <span class="orbit__slot" style="--a:0deg"><span class="orbit__label">OpenAI / GPT-4</span></span>
+                <span class="orbit__slot" style="--a:72deg"><span class="orbit__label">LangChain</span></span>
+                <span class="orbit__slot" style="--a:144deg"><span class="orbit__label">RAG</span></span>
+                <span class="orbit__slot" style="--a:216deg"><span class="orbit__label">Pinecone</span></span>
+                <span class="orbit__slot" style="--a:288deg"><span class="orbit__label">n8n</span></span>
+              </div></div>
+            </div>
+          </div>
+        </div>
+        <p class="stack-close" style="text-align:center;margin-top:var(--space-10)"><a href="#work" class="btn btn-secondary">See our projects →</a></p>
+      </div>
+    </section>
+
+    <!-- 09 — AI-NATIVE ENGINEERING -->
+    <section id="ai-native" class="section-mesh">
+      <div class="container">
+        <p class="section-label" style="text-align:center">09 — AI-native engineering</p>
+        <h2 style="text-align:center;max-width:640px;margin:0 auto">AI-capable, not buzzword.</h2>
+        <p class="section-intro" style="text-align:center;max-width:660px;margin-left:auto;margin-right:auto">Most shops list a few AI tools and call it a day. We bring our own AI engineering framework and a spec-driven approach to scoping and building.</p>
+        <div class="card-grid card-grid--2-4">
+          <div class="card card--invert"><span class="card-icon"><iconify-icon icon="mdi:hexagon-outline"></iconify-icon></span><h3>Our own framework</h3><p>A spec-driven AI engineering approach to scoping and building — not a few tools bolted on.</p></div>
+          <div class="card card--invert"><span class="card-icon"><iconify-icon icon="mdi:brain"></iconify-icon></span><h3>Real LLM stack</h3><p>We build with RAG, GPT-4 and other LLMs, LangChain, and n8n — production AI, not demos.</p></div>
+          <div class="card card--invert"><span class="card-icon"><iconify-icon icon="mdi:radar"></iconify-icon></span><h3>AI-powered discovery</h3><p>We scope the work precisely with AI before a single line of code, so estimates hold up.</p></div>
+          <div class="card card--invert"><span class="card-icon"><iconify-icon icon="mdi:rocket-launch-outline"></iconify-icon></span><h3>Fast prototyping</h3><p>Rapid AI prototyping for your product — validate ideas in days, not sprints. And we level your team up on it.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10 — SELECTED WORK -->
+    <section id="work" class="section--light">
+      <div class="container">
+        <p class="section-label">10 — Selected work</p>
+        <h2>Proof, not promises.</h2>
+        <p class="section-intro">A few of the products we've helped build, launch, and scale.</p>
+        <div class="work-grid">
+          <article class="card work-card">
+            <p class="case-industry">SaaS</p>
+            <h3>Structure IQ</h3>
+            <p class="work-blurb">A structural-health-monitoring SaaS platform — we built the web app and system architecture and helped scale delivery sprint over sprint.</p>
+            <blockquote class="work-quote">"The entire ByteNana team have been a pleasure to work with, far surpassing our initial expectations — like working alongside a partner actively invested in our success."<cite>— CTO, Structure IQ</cite></blockquote>
+            <a href="#" class="work-link">View case study →</a>
+          </article>
+          <article class="card work-card">
+            <p class="case-industry">IIoT</p>
+            <h3>Hawkeye</h3>
+            <p class="work-blurb">An industrial IoT monitoring system — we delivered the data pipeline and dashboards that turn sensor streams into real-time operational insight.</p>
+            <a href="#" class="work-link">View case study →</a>
+          </article>
+          <article class="card work-card">
+            <p class="case-industry">AI</p>
+            <h3>Findly</h3>
+            <p class="work-blurb">An AI-native product — we engineered the RAG and LLM features at its core, from spec-driven discovery through to a production launch.</p>
+            <a href="#" class="work-link">View case study →</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 11 — REVIEWS & RATINGS -->
+    <section id="reviews" class="section-proof section--light">
+      <div class="container">
+        <p class="section-label">11 — Reviews &amp; ratings</p>
+        <h2>Verified, not self-proclaimed.</h2>
+        <p class="section-intro">119 projects delivered · 100% Job Success on Upwork · Top Rated Plus (top 3% of talent) · 5.0 on Clutch.</p>
+
+        <div class="steps steps-carousel steps-carousel--slide" id="reviews-carousel">
+          <div class="steps-viewport"><div class="steps-track">
+            <blockquote class="step is-active"><div class="step-content"><div class="testimonial-stars" aria-label="5 star rating">★★★★★</div><p>"What impresses us most about ByteNana is their ability to deeply understand the emotional purpose behind our product."</p><footer>Co-Founder, Genostories Inc</footer></div></blockquote>
+            <blockquote class="step"><div class="step-content"><div class="testimonial-stars" aria-label="5 star rating">★★★★★</div><p>"I could say what I needed, and ByteNana turned it into code."</p><footer>CEO, Itri Corporation</footer></div></blockquote>
+            <blockquote class="step"><div class="step-content"><div class="testimonial-stars" aria-label="5 star rating">★★★★★</div><p>"Bruno goes above and beyond what's asked and adjusts to whatever his clients need — a tremendous asset for any business."</p><footer>Welcome Homes</footer></div></blockquote>
+            <blockquote class="step"><div class="step-content"><div class="testimonial-stars" aria-label="5 star rating">★★★★★</div><p>"They listen to the problem and deliver software that works at a fair cost."</p><footer>CEO, Multotec</footer></div></blockquote>
+            <blockquote class="step"><div class="step-content"><div class="testimonial-stars" aria-label="5 star rating">★★★★★</div><p>"We were impressed with their flexibility and skills."</p><footer>CEO, Rehinged</footer></div></blockquote>
+            <blockquote class="step"><div class="step-content"><div class="testimonial-stars" aria-label="5 star rating">★★★★★</div><p>"Working with Bruno has been a great experience — responsive, thoughtful, and high quality. Highly recommend."</p><footer>Sarah Carson, IDinsight</footer></div></blockquote>
+          </div></div>
+          <div class="steps-nav"><div class="steps-dots" role="tablist" aria-label="Reviews">
+            <button class="steps-dot is-active" type="button" data-step="0" aria-label="Review 1"></button>
+            <button class="steps-dot" type="button" data-step="1" aria-label="Review 2"></button>
+            <button class="steps-dot" type="button" data-step="2" aria-label="Review 3"></button>
+            <button class="steps-dot" type="button" data-step="3" aria-label="Review 4"></button>
+            <button class="steps-dot" type="button" data-step="4" aria-label="Review 5"></button>
+            <button class="steps-dot" type="button" data-step="5" aria-label="Review 6"></button>
+          </div></div>
+        </div>
+
+        <div class="trust-bar" style="margin-top:var(--space-10)">
+          <div class="trust-stat"><span class="trust-num">119</span><span class="trust-cap">Projects delivered</span></div>
+          <div class="trust-stat"><span class="trust-num">100%</span><span class="trust-cap">Job Success</span></div>
+          <div class="trust-stat"><span class="trust-num">Top 3%</span><span class="trust-cap">Top Rated Plus</span></div>
+          <div class="trust-stat"><span class="trust-num">5.0</span><span class="trust-cap">on Clutch</span></div>
+          <a href="#" class="trust-link">See full reviews →</a>
+        </div>
+        <p class="rating-meta" style="text-align:center;margin-top:var(--space-4)"><a href="#" class="work-link">See full reviews on Clutch</a> · <a href="#" class="work-link">View our Upwork profile</a></p>
+      </div>
+    </section>
+
+    <!-- 12 — HOW WE WORK -->
+    <section id="how-we-work" class="section-howwework">
+      <div class="container">
+        <p class="section-label" style="text-align:center">12 — How we work</p>
+        <h2 style="text-align:center;max-width:640px;margin:0 auto">From discovery to launch — no overhead.</h2>
+        <p class="section-intro" style="text-align:center;max-width:640px;margin-left:auto;margin-right:auto">We've refined our workflow to get your project from the first call to a successful launch without the friction.</p>
+        <div class="steps steps-carousel" id="how-carousel">
+          <div class="steps-viewport"><div class="steps-track">
+            <div class="step is-active"><div class="step-number" aria-hidden="true">01</div><div class="step-content"><h3>Discovery</h3><p>We analyze your requirements, goals, and technical constraints.</p></div></div>
+            <div class="step"><div class="step-number" aria-hidden="true">02</div><div class="step-content"><h3>Team Assembly</h3><p>We hand-pick the senior specialists best suited to your stack.</p></div></div>
+            <div class="step"><div class="step-number" aria-hidden="true">03</div><div class="step-content"><h3>Execution</h3><p>We build in sprints, with weekly demos, clear milestones, and constant feedback.</p></div></div>
+          </div></div>
+          <div class="steps-nav"><div class="steps-dots" role="tablist" aria-label="Process steps">
+            <button class="steps-dot is-active" type="button" data-step="0" aria-label="Step 01"></button>
+            <button class="steps-dot" type="button" data-step="1" aria-label="Step 02"></button>
+            <button class="steps-dot" type="button" data-step="2" aria-label="Step 03"></button>
+          </div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 13 — FINAL CTA -->
+    <section id="book" class="section-cta section--light">
+      <div class="container cta-grid">
+        <div class="cta-hub" data-globe data-radius="0.36">
+          <canvas class="cta-hub__links" aria-hidden="true"></canvas>
+          <span class="hub-node hub-node--center" data-lon="0" data-lat="0"><span class="hub-node__depth"><span class="hub-node__hover"><span class="hub-node__dot"><iconify-icon icon="mdi:account"></iconify-icon></span></span></span></span>
+          <span class="hub-node" data-lon="-45" data-lat="35"><span class="hub-node__depth"><span class="hub-node__hover"><span class="hub-node__dot"><iconify-icon icon="mdi:chip"></iconify-icon></span></span></span></span>
+          <span class="hub-node" data-lon="40" data-lat="32"><span class="hub-node__depth"><span class="hub-node__hover"><span class="hub-node__dot"><iconify-icon icon="mdi:cloud-outline"></iconify-icon></span></span></span></span>
+          <span class="hub-node" data-lon="58" data-lat="-8"><span class="hub-node__depth"><span class="hub-node__hover"><span class="hub-node__dot"><iconify-icon icon="mdi:code-tags"></iconify-icon></span></span></span></span>
+          <span class="hub-node" data-lon="-58" data-lat="8"><span class="hub-node__depth"><span class="hub-node__hover"><span class="hub-node__dot"><iconify-icon icon="mdi:cellphone"></iconify-icon></span></span></span></span>
+          <span class="hub-node" data-lon="-18" data-lat="-42"><span class="hub-node__depth"><span class="hub-node__hover"><span class="hub-node__dot"><iconify-icon icon="mdi:database"></iconify-icon></span></span></span></span>
+          <span class="hub-node hub-node--sm" data-lon="-32" data-lat="66"><span class="hub-node__depth"><span class="hub-node__hover"><span class="hub-node__dot"><iconify-icon icon="mdi:robot-outline"></iconify-icon></span></span></span></span>
+          <span class="hub-node hub-node--sm" data-lon="78" data-lat="52"><span class="hub-node__depth"><span class="hub-node__hover"><span class="hub-node__dot"><iconify-icon icon="mdi:api"></iconify-icon></span></span></span></span>
+          <span class="hub-node hub-node--sm" data-lon="82" data-lat="-38"><span class="hub-node__depth"><span class="hub-node__hover"><span class="hub-node__dot"><iconify-icon icon="mdi:source-branch"></iconify-icon></span></span></span></span>
+          <span class="hub-node hub-node--sm" data-lon="-72" data-lat="-56"><span class="hub-node__depth"><span class="hub-node__hover"><span class="hub-node__dot"><iconify-icon icon="mdi:server"></iconify-icon></span></span></span></span>
+          <span class="hub-node hub-node--sm" data-lon="-95" data-lat="22"><span class="hub-node__depth"><span class="hub-node__hover"><span class="hub-node__dot"><iconify-icon icon="mdi:react"></iconify-icon></span></span></span></span>
+          <span class="hub-node hub-node--center" data-lon="140" data-lat="-5"><span class="hub-node__depth"><span class="hub-node__hover"><span class="hub-node__dot"><iconify-icon icon="mdi:account"></iconify-icon></span></span></span></span>
+          <span class="hub-node" data-lon="115" data-lat="25"><span class="hub-node__depth"><span class="hub-node__hover"><span class="hub-node__dot"><iconify-icon icon="mdi:docker"></iconify-icon></span></span></span></span>
+          <span class="hub-node" data-lon="165" data-lat="20"><span class="hub-node__depth"><span class="hub-node__hover"><span class="hub-node__dot"><iconify-icon icon="mdi:language-python"></iconify-icon></span></span></span></span>
+          <span class="hub-node" data-lon="120" data-lat="-35"><span class="hub-node__depth"><span class="hub-node__hover"><span class="hub-node__dot"><iconify-icon icon="mdi:nodejs"></iconify-icon></span></span></span></span>
+          <span class="hub-node" data-lon="170" data-lat="-30"><span class="hub-node__depth"><span class="hub-node__hover"><span class="hub-node__dot"><iconify-icon icon="mdi:kubernetes"></iconify-icon></span></span></span></span>
+          <span class="hub-node hub-node--sm" data-lon="150" data-lat="52"><span class="hub-node__depth"><span class="hub-node__hover"><span class="hub-node__dot"><iconify-icon icon="mdi:figma"></iconify-icon></span></span></span></span>
+          <span class="hub-node hub-node--sm" data-lon="-130" data-lat="-20"><span class="hub-node__depth"><span class="hub-node__hover"><span class="hub-node__dot"><iconify-icon icon="mdi:language-typescript"></iconify-icon></span></span></span></span>
+          <span class="hub-node hub-node--sm" data-lon="200" data-lat="10"><span class="hub-node__depth"><span class="hub-node__hover"><span class="hub-node__dot"><iconify-icon icon="mdi:github"></iconify-icon></span></span></span></span>
+          <span class="hub-node hub-node--sm" data-lon="230" data-lat="-40"><span class="hub-node__depth"><span class="hub-node__hover"><span class="hub-node__dot"><iconify-icon icon="mdi:angular"></iconify-icon></span></span></span></span>
+          <span class="hub-node hub-node--sm" data-lon="255" data-lat="35"><span class="hub-node__depth"><span class="hub-node__hover"><span class="hub-node__dot"><iconify-icon icon="mdi:graphql"></iconify-icon></span></span></span></span>
+          <span class="hub-node hub-node--sm" data-lon="290" data-lat="-12"><span class="hub-node__depth"><span class="hub-node__hover"><span class="hub-node__dot"><iconify-icon icon="mdi:redis"></iconify-icon></span></span></span></span>
+          <span class="hub-node hub-node--sm" data-lon="-150" data-lat="55"><span class="hub-node__depth"><span class="hub-node__hover"><span class="hub-node__dot"><iconify-icon icon="mdi:linux"></iconify-icon></span></span></span></span>
+          <span class="hub-node hub-node--sm" data-lon="30" data-lat="-62"><span class="hub-node__depth"><span class="hub-node__hover"><span class="hub-node__dot"><iconify-icon icon="mdi:firebase"></iconify-icon></span></span></span></span>
+          <span class="hub-node hub-node--sm" data-lon="95" data-lat="62"><span class="hub-node__depth"><span class="hub-node__hover"><span class="hub-node__dot"><iconify-icon icon="mdi:vuejs"></iconify-icon></span></span></span></span>
+        </div>
+        <div class="cta-content">
+          <p class="section-label">13 — Let's talk</p>
+          <h2>Let's accelerate your digital roadmap.</h2>
+          <p class="section-intro">Tell us what you're building. We'll match you with the right senior team — fast.</p>
+          <form id="contact-form" class="contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" novalidate>
+            <input type="hidden" name="form-name" value="contact">
+            <p class="hidden" hidden><label>Don't fill this out: <input name="bot-field"></label></p>
+            <div class="form-group"><label for="name">Name</label><input type="text" id="name" name="name" placeholder="Your name" required autocomplete="name"></div>
+            <div class="form-group"><label for="email">Work Email</label><input type="email" id="email" name="email" placeholder="you@company.com" required autocomplete="email"></div>
+            <div class="form-group"><label for="project">Tell us about your project</label><textarea id="project" name="project" rows="4" placeholder="What are you building? What stack? What's your timeline?" required></textarea></div>
+            <button type="submit" class="btn btn-primary btn-full">Book a discovery call</button>
+            <p class="form-microcopy">By submitting, you agree to our <a href="#">Terms</a> and <a href="#">Privacy Policy</a>.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- 14 — FOOTER -->
+  <footer id="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <a href="#hero" class="logo" aria-label="ByteNana home">
+          <img src="assets/images/logo-Bn.svg" alt="" class="logo-mark">
+          <span class="logo-byte">Byte</span><span class="logo-nana">Nana</span>
+        </a>
+        <p>Engineering resilience. Scaling ambition. AI-native nearshore engineering for US startups and agencies.</p>
+      </div>
+      <div class="footer-col">
+        <p class="section-label">Projects</p>
+        <nav class="footer-nav" aria-label="Projects">
+          <a href="#work">SaaS — Structure IQ</a>
+          <a href="#work">IIoT — Hawkeye</a>
+          <a href="#work">AI — Findly</a>
+        </nav>
+      </div>
+      <div class="footer-col">
+        <p class="section-label">Company</p>
+        <nav class="footer-nav" aria-label="Company">
+          <a href="#hero">Home</a>
+          <a href="#why">About us</a>
+          <a href="#work">Our work</a>
+          <a href="#book" class="js-book">Contact us</a>
+        </nav>
+      </div>
+      <div class="footer-col">
+        <p class="section-label">Connect</p>
+        <div class="footer-social">
+          <a href="#" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="#" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+      <p class="footer-legal section-label">© 2026 ByteNana</p>
+    </div>
+  </footer>
+
+  <!-- Booking modal -->
+  <div id="booking-modal" class="booking-modal" hidden data-booking-url="https://calendar.google.com/calendar/u/0/r">
+    <div class="booking-modal__backdrop" data-close></div>
+    <div class="booking-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="booking-modal-title">
+      <button class="booking-modal__close" type="button" aria-label="Close" data-close>&times;</button>
+      <h3 id="booking-modal-title">Let's get you on the calendar</h3>
+      <p class="booking-modal__intro">Drop your name and email and we'll take you straight to our booking calendar.</p>
+      <form id="booking-form" class="booking-form" name="booking" method="POST" data-netlify="true" netlify-honeypot="bot-field" novalidate>
+        <input type="hidden" name="form-name" value="booking">
+        <p class="hidden" hidden><label>Don't fill this out: <input name="bot-field"></label></p>
+        <div class="form-group"><label for="book-name">Name</label><input type="text" id="book-name" name="name" placeholder="Your name" required autocomplete="name"></div>
+        <div class="form-group"><label for="book-email">Work Email</label><input type="email" id="book-email" name="email" placeholder="you@company.com" required autocomplete="email"></div>
+        <button type="submit" class="btn btn-primary btn-full">Continue to calendar →</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="https://code.iconify.design/iconify-icon/2.3.0/iconify-icon.min.js"></script>
+  <script src="js/hero-globe.js" defer></script>
+  <script src="js/animations.js"></script>
+  <script src="js/page.js"></script>
+</body>
+</html>
