@@ -261,7 +261,123 @@ function debounce(fn, delay) {
     if (window.ResizeObserver) { const ro = new ResizeObserver(() => { resize(); if (reduce) frame(0); }); ro.observe(hub); }
     if (reduce) frame(0); else requestAnimationFrame(frame);
   }
-  Array.prototype.slice.call(document.querySelectorAll('[data-globe]')).forEach(initGlobe);
+  /* Icosahedron mode: data-globe data-shape="ico".
+     12 icon nodes sit on the vertices. Edges on the silhouette draw as a thick
+     solid outline; interior/back edges draw dashed. Front faces fill at 10%. */
+  function initIco(hub) {
+    const canvas = hub.querySelector('canvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    const nodes = Array.prototype.slice.call(hub.querySelectorAll('.hub-node'));
+
+    const PHI = (1 + Math.sqrt(5)) / 2;
+    const NRM = Math.hypot(1, PHI, 0);
+    const V = [
+      [-1, PHI, 0], [1, PHI, 0], [-1, -PHI, 0], [1, -PHI, 0],
+      [0, -1, PHI], [0, 1, PHI], [0, -1, -PHI], [0, 1, -PHI],
+      [PHI, 0, -1], [PHI, 0, 1], [-PHI, 0, -1], [-PHI, 0, 1]
+    ].map((v) => [v[0] / NRM, v[1] / NRM, v[2] / NRM]);
+    const F = [
+      [0,11,5],[0,5,1],[0,1,7],[0,7,10],[0,10,11],
+      [1,5,9],[5,11,4],[11,10,2],[10,7,6],[7,1,8],
+      [3,9,4],[3,4,2],[3,2,6],[3,6,8],[3,8,9],
+      [4,9,5],[2,4,11],[6,2,10],[8,6,7],[9,8,1]
+    ];
+    // unique edges, each tagged with its two adjacent face indices
+    const emap = new Map();
+    F.forEach((f, fi) => {
+      for (let i = 0; i < 3; i++) {
+        const a = f[i], b = f[(i + 1) % 3];
+        const key = a < b ? a + '_' + b : b + '_' + a;
+        if (!emap.has(key)) emap.set(key, { a: Math.min(a, b), b: Math.max(a, b), faces: [] });
+        emap.get(key).faces.push(fi);
+      }
+    });
+    const E = Array.from(emap.values());
+
+    const spin = parseFloat(hub.dataset.spin || '0.00018');
+    const rFactor = parseFloat(hub.dataset.radius || '0.40');
+    const bond = (getComputedStyle(hub).getPropertyValue('--bond').trim() || '242, 183, 5');
+    const TILT = 0.40;                       // fixed pitch so the 3D form reads
+    let w = 0, h = 0, cx = 0, cy = 0, R = 0, pxr = 1;
+    const rot = [];
+
+    function resize() {
+      pxr = Math.min(window.devicePixelRatio || 1, 2);
+      const rect = hub.getBoundingClientRect();
+      w = rect.width; h = rect.height;
+      if (!w || !h) return;
+      canvas.width = Math.round(w * pxr); canvas.height = Math.round(h * pxr);
+      ctx.setTransform(pxr, 0, 0, pxr, 0, 0);
+      cx = w / 2; cy = h / 2; R = Math.min(w, h) * rFactor;
+    }
+    function frame(t) {
+      const ay = t * spin, cYaw = Math.cos(ay), sYaw = Math.sin(ay);
+      const cT = Math.cos(TILT), sT = Math.sin(TILT);
+      for (let i = 0; i < 12; i++) {
+        const v = V[i];
+        const x1 = v[0] * cYaw + v[2] * sYaw;     // yaw about Y
+        const z1 = -v[0] * sYaw + v[2] * cYaw;
+        const y1 = v[1] * cT - z1 * sT;            // tilt about X
+        const z2 = v[1] * sT + z1 * cT;
+        rot[i] = [x1, y1, z2];
+      }
+      const P = rot.map((v) => [cx + v[0] * R, cy - v[1] * R, v[2]]);
+      // icon nodes on the vertices
+      for (let i = 0; i < nodes.length && i < 12; i++) {
+        const depth = (rot[i][2] + 1) / 2;
+        nodes[i].style.left = P[i][0] + 'px';
+        nodes[i].style.top = P[i][1] + 'px';
+        nodes[i].style.setProperty('--s', (0.55 + 0.55 * depth).toFixed(3));
+        nodes[i].style.opacity = (0.2 + 0.8 * depth).toFixed(3);
+        nodes[i].style.zIndex = String(Math.round(depth * 100));
+      }
+      // front-facing test via outward normal (CCW faces) toward viewer (+z)
+      const front = F.map((f) => {
+        const A = rot[f[0]], B = rot[f[1]], C = rot[f[2]];
+        const ux = B[0] - A[0], uy = B[1] - A[1], uz = B[2] - A[2];
+        const vx = C[0] - A[0], vy = C[1] - A[1], vz = C[2] - A[2];
+        return (ux * vy - uy * vx) > 0;            // z of (u × v)
+      });
+      ctx.clearRect(0, 0, w, h);
+      // faces at 10% (front only) — kept subtle so the edges read clearly on top
+      ctx.setLineDash([]);
+      F.forEach((f, fi) => {
+        if (!front[fi]) return;
+        ctx.beginPath();
+        ctx.moveTo(P[f[0]][0], P[f[0]][1]);
+        ctx.lineTo(P[f[1]][0], P[f[1]][1]);
+        ctx.lineTo(P[f[2]][0], P[f[2]][1]);
+        ctx.closePath();
+        ctx.fillStyle = 'rgba(' + bond + ', 0.10)';
+        ctx.fill();
+      });
+      // edges: silhouette = thick solid outline (with a soft glow so it pops on the
+      // tinted fill), interior + hidden = dashed.
+      ctx.lineJoin = 'round';
+      ctx.lineCap = 'round';
+      E.forEach((e) => {
+        const fc = e.faces.reduce((n, fi) => n + (front[fi] ? 1 : 0), 0);
+        const a = P[e.a], b = P[e.b];
+        if (fc === 1) { ctx.setLineDash([]); ctx.lineWidth = 2.6; ctx.strokeStyle = 'rgba(' + bond + ', 1)'; ctx.shadowColor = 'rgba(' + bond + ', 0.9)'; ctx.shadowBlur = 8; }
+        else if (fc === 2) { ctx.setLineDash([6, 5]); ctx.lineWidth = 1.4; ctx.strokeStyle = 'rgba(' + bond + ', 0.7)'; ctx.shadowBlur = 0; }
+        else { ctx.setLineDash([4, 6]); ctx.lineWidth = 1.2; ctx.strokeStyle = 'rgba(' + bond + ', 0.32)'; ctx.shadowBlur = 0; }
+        ctx.beginPath(); ctx.moveTo(a[0], a[1]); ctx.lineTo(b[0], b[1]); ctx.stroke();
+      });
+      ctx.shadowBlur = 0;
+      ctx.setLineDash([]);
+      if (!reduce) requestAnimationFrame(frame);
+    }
+    resize();
+    window.addEventListener('resize', () => { resize(); if (reduce) frame(0); });
+    if (window.ResizeObserver) { const ro = new ResizeObserver(() => { resize(); if (reduce) frame(0); }); ro.observe(hub); }
+    if (reduce) frame(0); else requestAnimationFrame(frame);
+  }
+
+  Array.prototype.slice.call(document.querySelectorAll('[data-globe]')).forEach(function (hub) {
+    if ((hub.dataset.shape || '') === 'ico') initIco(hub);
+    else initGlobe(hub);
+  });
 })();
 
 /* ---- F. Forms + booking modal ------------------------------------------ */
