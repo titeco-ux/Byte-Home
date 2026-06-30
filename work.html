@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Work — Multotec IIoT Predictive Maintenance | ByteNana</title>
+  <meta name="description" content="How ByteNana engineered the WiseTec system — a sensor-to-cloud IIoT ecosystem (ESP32, C++/FreeRTOS, ThingsBoard, Angular) that moved Multotec's global mining clients from reactive repairs to predictive maintenance.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/page.css">
+  <link rel="stylesheet" href="css/work.css">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header id="navbar">
+    <div class="container navbar-inner">
+      <a href="index.html#hero" class="logo" aria-label="ByteNana home">
+        <img src="assets/images/logo-Bn.svg" alt="" class="logo-mark">
+        <span class="logo-byte">Byte</span><span class="logo-nana">Nana</span>
+      </a>
+      <nav aria-label="Main navigation">
+        <ul class="nav-links">
+          <li><a href="index.html#what-we-do">What we do</a></li>
+          <li><a href="index.html#how-we-engage">How we engage</a></li>
+          <li><a href="our-work.html">Work</a></li>
+          <li><a href="index.html#reviews">Reviews</a></li>
+          <li><a href="#book" class="btn btn-primary btn-sm js-book">Book a call</a></li>
+        </ul>
+      </nav>
+      <button id="menu-toggle" class="menu-toggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+      <button id="nav-toggle" class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">
+        <iconify-icon class="nav-toggle__open" icon="mdi:menu"></iconify-icon>
+        <iconify-icon class="nav-toggle__close" icon="mdi:close"></iconify-icon>
+      </button>
+    </div>
+    <nav id="mobile-menu" class="mobile-menu" aria-label="Mobile navigation">
+      <ul>
+        <li><a href="index.html#what-we-do">What we do</a></li>
+        <li><a href="index.html#how-we-engage">How we engage</a></li>
+        <li><a href="our-work.html">Work</a></li>
+        <li><a href="index.html#reviews">Reviews</a></li>
+        <li><a href="#book" class="js-book">Book a call</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- HERO (full-viewport, centred, client logo on top) -->
+    <section class="work-hero">
+      <div class="work-hero__bg" style="background-image:url('assets/work/multotec/hero-mine.png')"></div>
+      <div class="container">
+        <img class="work-hero__logo" src="assets/work/multotec/client-logo.png" alt="Multotec">
+        <h1>Revolutionizing mineral processing reliability with IIoT predictive maintenance</h1>
+        <p class="lede">How ByteNana engineered the WiseTec system — a robust sensor-to-cloud solution boosting production uptime for global mining clients.</p>
+      </div>
+    </section>
+
+    <!-- PROJECT META BAND -->
+    <section class="case-meta-band" data-nav-collapse-anchor>
+      <div class="container">
+        <div class="case-meta">
+          <div class="case-meta__item"><p class="case-meta__k">Industry</p><p class="case-meta__v">Industrial Mining &amp; IoT</p></div>
+          <div class="case-meta__item"><p class="case-meta__k">Project type</p><p class="case-meta__v">Firmware &amp; IoT ecosystem</p></div>
+          <div class="case-meta__item"><p class="case-meta__k">Key tech</p><p class="case-meta__v">ESP32 · C++ · Angular · ThingsBoard</p></div>
+          <div class="case-meta__item"><p class="case-meta__k">Outcome</p><p class="case-meta__v">Predictive maintenance &amp; OTA enabled</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- THE CHALLENGE (text left, reactive→predictive transform right) -->
+    <section>
+      <div class="container">
+        <div class="case-split">
+          <div class="case-split__text">
+            <p class="section-label">01 — The challenge</p>
+            <h2>Reliability in a harsh environment</h2>
+            <p class="section-intro">Multotec needed to enhance mineral-processing reliability for their global clients. Traditional methods lacked real-time visibility into equipment health, leading to reactive repairs and costly production downtime in unforgiving mining environments. They required an intelligent, rugged solution capable of delivering predictive insights from the edge to the cloud.</p>
+          </div>
+          <div class="case-split__media">
+            <div class="case-transform">
+              <img src="assets/work/multotec/sensor-alert.png" alt="Reactive maintenance — equipment fault alert" loading="lazy">
+              <span class="case-transform__arrow" aria-hidden="true">→</span>
+              <img src="assets/work/multotec/sensor-ok.png" alt="Predictive maintenance — healthy, operational equipment" loading="lazy">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- THE SOLUTION + ARCHITECTURE -->
+    <section class="section-mesh">
+      <div class="container">
+        <p class="section-label">02 — The WiseTec solution</p>
+        <h2>An end-to-end IIoT ecosystem</h2>
+        <p class="section-intro">ByteNana engineered a complete ecosystem, from modular firmware at the edge to advanced telemetry in the cloud — using modular C++/FreeRTOS on ESP32 smart sensors to guarantee robust performance under constraint.</p>
+        <div class="arch-flow">
+          <div class="arch-step"><span class="arch-step__n">1</span><div><h4>Smart Sensor</h4><p>ESP32 · C++ / FreeRTOS</p></div></div>
+          <div class="arch-step"><span class="arch-step__n">2</span><div><h4>Secure Gateway</h4><p>Hardened telemetry uplink</p></div></div>
+          <div class="arch-step"><span class="arch-step__n">3</span><div><h4>ThingsBoard Backend</h4><p>Ingest &amp; normalize streams</p></div></div>
+          <div class="arch-step"><span class="arch-step__n">4</span><div><h4>Angular Dashboard</h4><p>Real-time visualization &amp; OTA</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALLERY (the realized Angular dashboard) -->
+    <section>
+      <div class="container">
+        <p class="section-label">03 — Inside the platform</p>
+        <h2>The WiseTec dashboard</h2>
+        <p class="section-intro">Real-time process analysis built on ThingsBoard — live equipment health, vibration signatures, and cyclone-level SCADA telemetry across global sites.</p>
+        <div class="gallery">
+          <figure class="shot">
+            <img src="assets/work/multotec/dashboard-cyclones.png" alt="WiseTec dashboard: chrome tailings thickening with live cyclone status and acceleration charts" loading="lazy">
+            <figcaption class="shot__cap">Cyclone cluster overview — live status, production tables, and max-acceleration trends.</figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="assets/work/multotec/dashboard-cul.png" alt="WiseTec dashboard: cyclone SCADA data with density, pressure and gyro readings" loading="lazy">
+            <figcaption class="shot__cap">Per-cyclone SCADA — density, pressure, feed rate, and gyro telemetry in real time.</figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="assets/work/multotec/dashboard-screens.png" alt="WiseTec dashboard: 3D point-movement vibration analysis per sensor" loading="lazy">
+            <figcaption class="shot__cap">Vibration analysis — 3D point-movement signatures, angle, acceleration, frequency, and stroke per sensor.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- KEY FEATURES -->
+    <section class="section--light">
+      <div class="container">
+        <p class="section-label">04 — Engineered for resilience and scale</p>
+        <h2>What we built</h2>
+        <div class="card-grid card-grid--2-4">
+          <div class="card"><span class="card-icon" aria-hidden="true"><iconify-icon icon="mdi:chip"></iconify-icon></span><h3>Intelligent edge firmware</h3><p>Modular C++/FreeRTOS firmware optimized for ESP32, enabling real-time decision-making directly at the sensor level.</p></div>
+          <div class="card"><span class="card-icon" aria-hidden="true"><iconify-icon icon="mdi:cloud-sync-outline"></iconify-icon></span><h3>Robust OTA updates</h3><p>Future-proofed the whole system with remote, secure updates for both the hardware firmware and the Angular front-end.</p></div>
+          <div class="card"><span class="card-icon" aria-hidden="true"><iconify-icon icon="mdi:database-sync-outline"></iconify-icon></span><h3>Advanced telemetry normalization</h3><p>A ThingsBoard backend ingests, normalizes, and manages massive streams of complex industrial sensor data.</p></div>
+          <div class="card"><span class="card-icon" aria-hidden="true"><iconify-icon icon="mdi:chart-line"></iconify-icon></span><h3>Predictive insights dashboard</h3><p>A custom Angular front-end delivering real-time visualization and actionable alerts to boost production efficiency.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- THE RESULT -->
+    <section class="section--light work-cta">
+      <div class="container">
+        <p class="section-label" style="text-align:center">05 — The result</p>
+        <h2>Boosting global production uptime</h2>
+        <p class="section-intro" style="max-width:62ch;margin:var(--space-4) auto 0">The WiseTec system successfully transitioned Multotec's clients from reactive repairs to proactive, predictive maintenance. By delivering real-time insights and robust device management, the solution directly increased efficiency and reduced costly operational downtime across global mining sites.</p>
+      </div>
+    </section>
+
+    <!-- TECHNOLOGIES -->
+    <section>
+      <div class="container">
+        <p class="section-label">06 — Technologies used</p>
+        <h2>The stack behind WiseTec</h2>
+        <div class="card-grid card-grid--3">
+          <div class="card card--invert"><span class="card-icon" aria-hidden="true"><iconify-icon icon="simple-icons:espressif"></iconify-icon></span><h3>C++, FreeRTOS &amp; ESP32</h3><p>High-performance data processing directly on the hardware — where raw industrial signals are captured and refined.</p></div>
+          <div class="card card--invert"><span class="card-icon" aria-hidden="true"><iconify-icon icon="mdi:lan-connect"></iconify-icon></span><h3>ThingsBoard</h3><p>Normalizes telemetry and manages device fleets — the intelligent middleman ensuring data integrity and security between the mine and the cloud.</p></div>
+          <div class="card card--invert"><span class="card-icon" aria-hidden="true"><iconify-icon icon="simple-icons:angular"></iconify-icon></span><h3>Angular</h3><p>Delivers the final visualization and interactive dashboards — turning complex data into actionable insights for the end-user.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section--light work-cta">
+      <div class="container">
+        <p class="section-label" style="text-align:center">Engineering resilience. Scaling ambition.</p>
+        <h2>Need to engineer a robust IIoT solution?</h2>
+        <a href="#book" class="btn btn-primary js-book">Schedule a consultation →</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer id="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <a href="index.html#hero" class="logo" aria-label="ByteNana home">
+          <img src="assets/images/logo-Bn.svg" alt="" class="logo-mark">
+          <span class="logo-byte">Byte</span><span class="logo-nana">Nana</span>
+        </a>
+        <p>Engineering resilience. Scaling ambition. AI-native nearshore engineering for US startups and agencies.</p>
+      </div>
+      <div class="footer-col">
+        <p class="section-label">Projects</p>
+        <nav class="footer-nav" aria-label="Projects">
+          <a href="work.html">IIoT — Multotec</a>
+          <a href="index.html#work">SaaS — Structure IQ</a>
+          <a href="index.html#work">AI — Findly</a>
+        </nav>
+      </div>
+      <div class="footer-col">
+        <p class="section-label">Company</p>
+        <nav class="footer-nav" aria-label="Company">
+          <a href="index.html#hero">Home</a>
+          <a href="index.html#why">About us</a>
+          <a href="our-work.html">Our work</a>
+          <a href="#book" class="js-book">Contact us</a>
+        </nav>
+      </div>
+      <div class="footer-col">
+        <p class="section-label">Connect</p>
+        <div class="footer-social">
+          <a href="#" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="#" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+      <p class="footer-legal section-label">© 2026 ByteNana</p>
+    </div>
+  </footer>
+
+  <!-- Booking modal -->
+  <div id="booking-modal" class="booking-modal" hidden data-booking-url="https://calendar.google.com/calendar/u/0/r">
+    <div class="booking-modal__backdrop" data-close></div>
+    <div class="booking-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="booking-modal-title">
+      <button class="booking-modal__close" type="button" aria-label="Close" data-close>&times;</button>
+      <h3 id="booking-modal-title">Let's get you on the calendar</h3>
+      <p class="booking-modal__intro">Drop your name and email and we'll take you straight to our booking calendar.</p>
+      <form id="booking-form" class="booking-form" name="booking" method="POST" data-netlify="true" netlify-honeypot="bot-field" novalidate>
+        <input type="hidden" name="form-name" value="booking">
+        <p class="hidden" hidden><label>Don't fill this out: <input name="bot-field"></label></p>
+        <div class="form-group"><label for="book-name">Name</label><input type="text" id="book-name" name="name" placeholder="Your name" required autocomplete="name"></div>
+        <div class="form-group"><label for="book-email">Work Email</label><input type="email" id="book-email" name="email" placeholder="you@company.com" required autocomplete="email"></div>
+        <button type="submit" class="btn btn-primary btn-full">Continue to calendar →</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="https://code.iconify.design/iconify-icon/2.3.0/iconify-icon.min.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/page.js"></script>
+</body>
+</html>

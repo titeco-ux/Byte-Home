@@ -11,6 +11,9 @@
      D. Step carousel (slide + flip) with dots / swipe / auto-advance
      E. Molecular globe hub(s)  [data-globe]
      F. Forms (validation + Netlify POST) + booking modal
+     G. Mesh background parallax (sections 01 + 03)
+     H. Replay line-md card icons on scroll into view (section 03)
+     I. Tech-stack 3D hubs (N vertices on a sphere + centre icon, per tab)
    All motion respects prefers-reduced-motion.
    ========================================================================== */
 
@@ -323,22 +326,17 @@ function debounce(fn, delay) {
         rot[i] = [x1, y1, z2];
       }
       const P = rot.map((v) => [cx + v[0] * R, cy - v[1] * R, v[2]]);
-      // icon nodes on the vertices
-      for (let i = 0; i < nodes.length && i < 12; i++) {
-        const depth = (rot[i][2] + 1) / 2;
-        nodes[i].style.left = P[i][0] + 'px';
-        nodes[i].style.top = P[i][1] + 'px';
-        nodes[i].style.setProperty('--s', (0.55 + 0.55 * depth).toFixed(3));
-        nodes[i].style.opacity = (0.2 + 0.8 * depth).toFixed(3);
-        nodes[i].style.zIndex = String(Math.round(depth * 100));
-      }
-      // front-facing test via outward normal (CCW faces) toward viewer (+z)
-      const front = F.map((f) => {
+      // per-face normal z (CCW faces): sign = front/back, magnitude = how head-on it is
+      const nz = F.map((f) => {
         const A = rot[f[0]], B = rot[f[1]], C = rot[f[2]];
-        const ux = B[0] - A[0], uy = B[1] - A[1], uz = B[2] - A[2];
-        const vx = C[0] - A[0], vy = C[1] - A[1], vz = C[2] - A[2];
-        return (ux * vy - uy * vx) > 0;            // z of (u × v)
+        const ux = B[0] - A[0], uy = B[1] - A[1];
+        const vx = C[0] - A[0], vy = C[1] - A[1];
+        return ux * vy - uy * vx;                   // z of (u × v)
       });
+      const front = nz.map((z) => z > 0);
+      let maxNz = 0;
+      for (let i = 0; i < nz.length; i++) { if (nz[i] > maxNz) maxNz = nz[i]; }
+      if (maxNz <= 0) maxNz = 1;
       ctx.clearRect(0, 0, w, h);
       // faces at 10% (front only) — kept subtle so the edges read clearly on top
       ctx.setLineDash([]);
@@ -352,6 +350,21 @@ function debounce(fn, delay) {
         ctx.fillStyle = 'rgba(' + bond + ', 0.10)';
         ctx.fill();
       });
+      // icon nodes printed on the face centroids, billboarded. Each fades in as its
+      // face turns to meet the viewer (fade = 0 at the silhouette → no pop) and out
+      // as it rotates to the back.
+      for (let i = 0; i < nodes.length && i < F.length; i++) {
+        const f = F[i];
+        const fade = front[i] ? nz[i] / maxNz : 0;
+        if (fade <= 0.001) { nodes[i].style.opacity = '0'; continue; }
+        const ccx = (P[f[0]][0] + P[f[1]][0] + P[f[2]][0]) / 3;
+        const ccy = (P[f[0]][1] + P[f[1]][1] + P[f[2]][1]) / 3;
+        nodes[i].style.left = ccx + 'px';
+        nodes[i].style.top = ccy + 'px';
+        nodes[i].style.setProperty('--s', (0.5 + 0.5 * fade).toFixed(3));
+        nodes[i].style.opacity = Math.pow(fade, 0.7).toFixed(3);
+        nodes[i].style.zIndex = String(Math.round(fade * 100));
+      }
       // edges: silhouette = thick solid outline (with a soft glow so it pops on the
       // tinted fill), interior + hidden = dashed.
       ctx.lineJoin = 'round';
@@ -457,4 +470,153 @@ function debounce(fn, delay) {
       });
     });
   }
+})();
+
+/* ---- G. Mesh background parallax (sections 01 + 03) --------------------- */
+/* Drives a translateY on each .section-mesh dotted backdrop from scroll, so the
+   dots glide slower than the content for a depth effect. The drift animation runs
+   on background-position, leaving transform free for this. */
+(function () {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const meshes = Array.prototype.slice.call(document.querySelectorAll('.section-mesh'));
+  if (!meshes.length) return;
+  const SPEED = 0.12;                       // fraction of the section's scroll offset
+  let ticking = false;
+  function update() {
+    const mid = window.innerHeight / 2;
+    for (let i = 0; i < meshes.length; i++) {
+      const r = meshes[i].getBoundingClientRect();
+      const offset = (r.top + r.height / 2) - mid;   // 0 when section is centered in the viewport
+      meshes[i].style.setProperty('--mesh-y', (-offset * SPEED).toFixed(1) + 'px');
+    }
+    ticking = false;
+  }
+  function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(update); } }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  update();
+})();
+
+/* ---- H. Replay line-md card icons when section 03 scrolls into view ----- */
+/* The draw-on icons (line-md) animate once at render time, which happens on load
+   while section 03 is below the fold. Re-setting the `icon` attribute forces the
+   iconify web component to re-render, restarting the SVG animation in view. */
+(function () {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (!('IntersectionObserver' in window)) return;
+  const icons = Array.prototype.slice.call(document.querySelectorAll('#what-we-do .card-icon iconify-icon'));
+  if (!icons.length) return;
+  function replay(el) {
+    const name = el.getAttribute('icon');
+    if (!name) return;
+    el.removeAttribute('icon');
+    requestAnimationFrame(() => el.setAttribute('icon', name));
+  }
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => { if (e.isIntersecting) replay(e.target); });
+  }, { threshold: 0.6 });
+  icons.forEach((el) => io.observe(el));
+})();
+
+/* ---- I. Tech-stack 3D hubs --------------------------------------------- */
+/* One per tab. The N vertex icons sit on the vertices of the matching polyhedron
+   (4→tetrahedron, 5→triangular bipyramid, 6→octahedron, etc.) and the polyhedron's
+   real edges are drawn as a rotating wireframe; the category icon sits fixed at the
+   centre. Hidden panels have zero size — the loop no-ops until a ResizeObserver fires. */
+(function () {
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const hubs = Array.prototype.slice.call(document.querySelectorAll('[data-tech-hub]'));
+  if (!hubs.length) return;
+
+  // The actual polyhedron for a given vertex count: { V: vertices, E: edges }.
+  function polyhedron(n) {
+    const q = 0.5773502691896258;  // 1/sqrt(3) — tetrahedron
+    if (n === 2) return { V: [[0,1,0],[0,-1,0]], E: [[0,1]] };                                   // axis
+    if (n === 3) return { V: [[0,0,1],[-0.866,0,-0.5],[0.866,0,-0.5]], E: [[0,1],[1,2],[2,0]] }; // triangle
+    if (n === 4) return { V: [[q,q,q],[q,-q,-q],[-q,q,-q],[-q,-q,q]],                             // tetrahedron
+                          E: [[0,1],[0,2],[0,3],[1,2],[1,3],[2,3]] };
+    if (n === 5) return { V: [[0,1,0],[0,-1,0],[1,0,0],[-0.5,0,0.866],[-0.5,0,-0.866]],           // triangular bipyramid
+                          E: [[0,2],[0,3],[0,4],[1,2],[1,3],[1,4],[2,3],[3,4],[4,2]] };
+    if (n === 6) return { V: [[1,0,0],[-1,0,0],[0,1,0],[0,-1,0],[0,0,1],[0,0,-1]],                // octahedron
+                          E: [[0,2],[0,3],[0,4],[0,5],[1,2],[1,3],[1,4],[1,5],[2,4],[2,5],[3,4],[3,5]] };
+    // fallback for any other count: even ring on a sphere
+    const V = [], E = [], g = Math.PI * (3 - Math.sqrt(5));
+    for (let i = 0; i < n; i++) { const y = n === 1 ? 0 : 1 - (i / (n - 1)) * 2; const r = Math.sqrt(Math.max(0, 1 - y * y)); const th = i * g; V.push([Math.cos(th) * r, y, Math.sin(th) * r]); }
+    for (let i = 0; i < n; i++) E.push([i, (i + 1) % n]);
+    return { V, E };
+  }
+
+  function initHub(hub) {
+    const canvas = hub.querySelector('canvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    const center = hub.querySelector('.hub-node--center');
+    const verts = Array.prototype.slice.call(hub.querySelectorAll('.hub-node')).filter((el) => el !== center);
+    const N = verts.length;
+    if (!N) return;
+
+    // Shape vertex count may exceed the icon count (data-poly-vertices): the extra
+    // vertices still draw in the wireframe but carry no icon.
+    const G = parseInt(hub.dataset.polyVertices || '', 10) || N;
+    const poly = polyhedron(G);
+    const P = poly.V;      // vertices
+    const EDG = poly.E;    // polyhedron edges
+
+    const bond = (getComputedStyle(hub).getPropertyValue('--bond').trim() || '242, 183, 5');
+    const spin = parseFloat(hub.dataset.spin || '0.00022');
+    const rFactor = parseFloat(hub.dataset.radius || '0.34');
+    const TILT = 0.5;
+    let w = 0, h = 0, cx = 0, cy = 0, R = 0, pxr = 1;
+    const rot = new Array(P.length);
+
+    function resize() {
+      pxr = Math.min(window.devicePixelRatio || 1, 2);
+      const rect = hub.getBoundingClientRect();
+      w = rect.width; h = rect.height;
+      if (!w || !h) return;
+      canvas.width = Math.round(w * pxr); canvas.height = Math.round(h * pxr);
+      ctx.setTransform(pxr, 0, 0, pxr, 0, 0);
+      cx = w / 2; cy = h / 2; R = Math.min(w, h) * rFactor;
+    }
+    function frame(t) {
+      if (w && h) {
+        const ay = t * spin, cY = Math.cos(ay), sY = Math.sin(ay);
+        const cT = Math.cos(TILT), sT = Math.sin(TILT);
+        for (let i = 0; i < P.length; i++) {
+          const v = P[i];
+          const x1 = v[0] * cY + v[2] * sY;
+          const z1 = -v[0] * sY + v[2] * cY;
+          const y1 = v[1] * cT - z1 * sT;
+          const z2 = v[1] * sT + z1 * cT;
+          rot[i] = [cx + x1 * R, cy - y1 * R, z2];
+        }
+        if (center) { center.style.left = cx + 'px'; center.style.top = cy + 'px'; center.style.zIndex = '60'; }
+        for (let i = 0; i < N; i++) {
+          const depth = (rot[i][2] + 1) / 2;
+          const el = verts[i];
+          el.style.left = rot[i][0] + 'px';
+          el.style.top = rot[i][1] + 'px';
+          el.style.setProperty('--s', (0.5 + 0.55 * depth).toFixed(3));
+          el.style.opacity = (0.28 + 0.72 * depth).toFixed(3);
+          el.style.zIndex = String(Math.round(depth * 100));
+        }
+        ctx.clearRect(0, 0, w, h);
+        ctx.lineWidth = 1.5; ctx.lineCap = 'round'; ctx.setLineDash([]);
+        for (let e = 0; e < EDG.length; e++) {
+          const a = rot[EDG[e][0]], b = rot[EDG[e][1]];
+          const vis = ((a[2] + 1) / 2 + (b[2] + 1) / 2) / 2;   // edges toward the back fade out
+          ctx.beginPath(); ctx.moveTo(a[0], a[1]); ctx.lineTo(b[0], b[1]);
+          ctx.strokeStyle = 'rgba(' + bond + ', ' + (0.12 + 0.5 * vis).toFixed(3) + ')';
+          ctx.stroke();
+        }
+      }
+      if (!reduce) requestAnimationFrame(frame);
+    }
+    resize();
+    window.addEventListener('resize', () => { resize(); if (reduce) frame(0); });
+    if (window.ResizeObserver) { const ro = new ResizeObserver(() => { resize(); if (reduce) frame(0); }); ro.observe(hub); }
+    if (reduce) { resize(); frame(0); } else requestAnimationFrame(frame);
+  }
+
+  hubs.forEach(initHub);
 })();

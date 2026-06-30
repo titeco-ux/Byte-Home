@@ -303,24 +303,23 @@
 .section-mesh { position: relative; overflow: hidden; }
 .section-mesh::before {
   content: "";
-  position: absolute; inset: -80px;
+  position: absolute; inset: -160px;   /* extra bleed so the scroll parallax never exposes an edge */
   background-image:
     radial-gradient(circle, rgba(252, 252, 252, 0.10) 1px, transparent 1.5px),
     radial-gradient(circle, rgba(252, 252, 252, 0.10) 1px, transparent 1.5px);
   background-size: 28px 28px, 28px 28px;
   background-position: 0 0, 14px 14px;
+  /* drift via background-position so transform is free for the scroll parallax (JS sets --mesh-y) */
+  transform: translate3d(0, var(--mesh-y, 0px), 0);
   animation: mesh-wave 14s ease-in-out infinite;
-  will-change: transform; pointer-events: none; z-index: 0;
+  will-change: transform, background-position; pointer-events: none; z-index: 0;
 }
 .section-mesh > .container { position: relative; z-index: 1; }
 @keyframes mesh-wave {
-  0%   { transform: translate(0, 0); }
-  25%  { transform: translate(14px, -10px); }
-  50%  { transform: translate(0, -22px); }
-  75%  { transform: translate(-14px, -10px); }
-  100% { transform: translate(0, 0); }
+  0%, 100% { background-position: 0 0, 14px 14px; }
+  50%      { background-position: 18px -16px, 32px -2px; }
 }
-@media (prefers-reduced-motion: reduce) { .section-mesh::before { animation: none; } }
+@media (prefers-reduced-motion: reduce) { .section-mesh::before { animation: none; transform: none; } }
 
 
 /* ==========================================================================
@@ -412,73 +411,79 @@
 @keyframes trust-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 @media (prefers-reduced-motion: reduce) { .trust-track { animation: none; } }
 
+/* --- Client logo belt — infinitely scrolling image logos (two identical copies) --- */
+.logo-belt {
+  margin: var(--space-8) 0 var(--space-12); overflow: hidden; width: 100%;
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
+          mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
+}
+.logo-belt__track {
+  display: flex; align-items: center; width: max-content;
+  animation: trust-scroll 45s linear infinite;
+}
+.logo-belt:hover .logo-belt__track { animation-play-state: paused; }
+/* Symmetric per-logo margins (not flex gap) so both copies tile pixel-perfectly
+   despite the logos' differing widths — keeps the loop seamless. */
+.logo-belt img {
+  flex: 0 0 auto; height: 34px; width: auto; margin: 0 var(--space-8);
+  object-fit: contain;
+  filter: brightness(0) invert(1);          /* unify mixed-color logos to white */
+  opacity: 0.55; transition: opacity var(--t-fast) ease;
+}
+.logo-belt img:hover { opacity: 1; }
+@media (prefers-reduced-motion: reduce) { .logo-belt__track { animation: none; } }
+
 
 /* ==========================================================================
-   7. TABBED ORBIT — category icon centered, labels orbiting on a ring
+   7. TECH STACK — vertical tabs (left) + 3D tech hub & name list (right)
    ========================================================================== */
-.stack-tablist {
-  display: flex; flex-direction: row; flex-wrap: nowrap; justify-content: center;
-  gap: var(--space-2); overflow-x: auto;
-  padding-bottom: var(--space-2); margin-bottom: var(--space-10);
-}
+.stack-tabs { display: grid; grid-template-columns: 1fr; gap: var(--space-8); margin-top: var(--space-10); }
+.stack-tablist { display: flex; flex-direction: row; flex-wrap: wrap; gap: var(--space-2); }
 .stack-tab {
   display: inline-flex; align-items: center; gap: var(--space-2);
-  flex: 0 0 auto; white-space: nowrap;
+  flex: 1 1 auto; white-space: nowrap;
   padding: var(--space-3) var(--space-4);
-  border: 1px solid transparent; border-radius: var(--radius);
+  border: 1px solid rgba(15, 17, 18, 0.15); border-radius: var(--radius);
   background: transparent; font-family: var(--font-heading);
   font-weight: 600; font-size: var(--text-base); cursor: pointer;
-  color: var(--on-light-muted); border-color: rgba(15, 17, 18, 0.15);
+  color: var(--on-light-muted);
   transition: background-color var(--t-base) ease, color var(--t-base) ease, border-color var(--t-base) ease;
 }
 .stack-tab:hover { color: var(--color-bg); border-color: var(--color-primary); }
 .stack-tab.is-active { background-color: var(--color-primary); border-color: var(--color-primary); color: var(--color-bg); }
 .stack-tab__ic { width: 1.2em; height: 1.2em; fill: currentColor; flex: 0 0 auto; }
 
-.stack-panels { position: relative; overflow: hidden; }
+.stack-panels { position: relative; }
 .stack-panel { display: none; }
-.stack-panel.is-active { display: flex; justify-content: center; }
+.stack-panel.is-active { display: flex; flex-direction: column; align-items: center; }
 
-.stack-orbit { position: relative; width: min(420px, 84vw); aspect-ratio: 1 / 1; --r: 150px; }
-.stack-orbit::before {
-  content: ""; position: absolute; top: 50%; left: 50%;
-  width: calc(var(--r) * 2); height: calc(var(--r) * 2);
-  transform: translate(-50%, -50%);
-  border: 1px solid var(--color-primary); border-radius: 50%; pointer-events: none;
+.tech-hub { width: 100%; max-width: 462px; min-height: 374px; }   /* 10% larger */
+.tech-list {
+  order: -1;   /* sits above the animation, top-aligned with the tabs */
+  display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-2) var(--space-3);
+  margin: 0 0 var(--space-2); padding: 0; list-style: none;
 }
-.stack-panel__ic {
-  position: absolute; top: 50%; left: 50%; width: 92px; height: 92px;
-  transform: translate(-50%, -50%); fill: var(--color-primary);
-}
-.orbit__ring { position: absolute; inset: 0; animation: orbit-spin 32s linear infinite; }
-.orbit__slot {
-  position: absolute; top: 50%; left: 50%; width: 0; height: 0;
-  /* place at angle --a on the circle, then un-rotate so the label sits upright */
-  transform: rotate(var(--a)) translate(var(--r)) rotate(calc(-1 * var(--a)));
-}
-.orbit__label {
-  position: absolute; white-space: nowrap;
-  padding: var(--space-2) var(--space-3);
-  border: 1px solid rgba(15, 17, 18, 0.2); border-radius: 999px;
-  background-color: rgba(252, 252, 252, 0.85); color: var(--color-bg);
+.tech-list li {
+  padding: var(--space-2) var(--space-4);
+  border: 1px solid rgba(15, 17, 18, 0.18); border-radius: 999px;
+  background-color: rgba(252, 252, 252, 0.7); color: var(--on-light-text);
   font-family: var(--font-heading); font-weight: 600; font-size: var(--text-sm);
-  animation: orbit-spin-rev 32s linear infinite;   /* counter-spin → text stays upright */
 }
-@keyframes orbit-spin { to { transform: rotate(360deg); } }
-@keyframes orbit-spin-rev {
-  from { transform: translate(-50%, -50%) rotate(0deg); }
-  to   { transform: translate(-50%, -50%) rotate(-360deg); }
-}
-@media (max-width: 520px) { .stack-orbit { --r: 110px; } .orbit__label { font-size: var(--text-xs); } }
-@media (prefers-reduced-motion: reduce) {
-  .orbit__ring, .orbit__label { animation: none; }
-  .orbit__label { transform: translate(-50%, -50%); }
-}
+
 /* staggered fade-in when a panel activates */
 .stack-panel.is-active > * { animation: stack-fade-in 0.5s ease both; }
-.stack-panel.is-active > *:nth-child(2) { animation-delay: 0.09s; }
-.stack-panel.is-active > *:nth-child(3) { animation-delay: 0.18s; }
+.stack-panel.is-active > *:nth-child(2) { animation-delay: 0.12s; }
 @keyframes stack-fade-in { from { opacity: 0; } to { opacity: 1; } }
+/* fade in AND keep a gentle 5% pulse on the hub (opacity + transform compose) */
+.stack-panel.is-active .tech-hub { animation: stack-fade-in 0.5s ease both, tech-pulse 6s ease-in-out infinite; }
+@keyframes tech-pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+@media (prefers-reduced-motion: reduce) { .stack-panel.is-active .tech-hub { animation: none; } }
+
+@media (min-width: 768px) {
+  .stack-tabs { grid-template-columns: 240px 1fr; align-items: start; }
+  .stack-tablist { flex-direction: column; }
+  .stack-tab { width: 100%; }
+}
 
 
 /* ==========================================================================

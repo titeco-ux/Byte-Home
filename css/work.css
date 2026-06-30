@@ -1,0 +1,115 @@
+/* ==========================================================================
+   OUR WORK / CASE STUDY — page-specific, built on the design-kit tokens.
+   Only composition lives here; every colour/space value comes from tokens.css.
+   ========================================================================== */
+
+/* --- Page hero: full-viewport darkened photo, centred content ----------- */
+.work-hero {
+  position: relative; overflow: hidden;
+  min-height: 100vh; display: flex; align-items: center;
+  padding: calc(var(--navbar-height, 72px) + var(--space-16)) 0 var(--space-16);
+  text-align: center;
+}
+.work-hero__bg {
+  position: absolute; inset: 0; z-index: 0;
+  background-size: cover; background-position: center;
+}
+.work-hero__bg::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(15, 17, 18, 0.55), rgba(15, 17, 18, 0.8));
+}
+.work-hero > .container { position: relative; z-index: 1; }
+.work-hero__logo { height: 64px; width: auto; margin: 0 auto var(--space-6); display: block; }
+/* render colored client logos as solid white so they read on the dark hero */
+.work-hero__logo--mono { filter: brightness(0) invert(1); }
+.work-hero h1 { font-size: clamp(2rem, 5vw, 3.2rem); letter-spacing: -0.03em; line-height: 1.1; max-width: 22ch; margin: 0 auto; }
+.work-hero .lede { font-size: var(--text-lg); color: var(--color-text-muted); max-width: 60ch; margin: var(--space-5) auto 0; line-height: 1.7; }
+
+/* --- Project metadata band (its own strip below the hero) --------------- */
+.case-meta-band { padding-top: var(--space-12); padding-bottom: var(--space-12); }
+.case-meta { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-5); }
+.case-meta__item { border: 1px solid var(--color-border); border-radius: var(--radius); padding: var(--space-5) var(--space-6); background: var(--color-surface); }
+.case-meta__k { font-size: var(--text-xs); font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-primary); }
+.case-meta__v { margin-top: var(--space-2); font-family: var(--font-heading); font-weight: 700; font-size: var(--text-lg); color: var(--color-text); }
+
+/* --- Challenge / Result split: text + illustration --------------------- */
+.case-split { display: grid; grid-template-columns: 1fr; gap: var(--space-8); align-items: center; }
+.case-split__media { display: flex; justify-content: center; }
+.case-split__media img { width: 100%; max-width: 300px; height: auto; }
+
+/* "reactive → predictive" transformation graphic (red sensor → green sensor) */
+.case-transform { display: flex; align-items: center; justify-content: center; gap: var(--space-4); }
+.case-transform img { width: 38%; max-width: 150px; height: auto; }
+.case-transform__arrow { color: var(--color-primary); font-size: var(--text-3xl); line-height: 1; flex: 0 0 auto; }
+
+/* --- Architecture flow (sensor → gateway → backend → dashboard) -------- */
+.arch-flow { display: grid; grid-template-columns: 1fr; gap: var(--space-4); margin-top: var(--space-10); }
+.arch-step {
+  display: flex; align-items: center; gap: var(--space-4);
+  background: var(--color-surface); border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg); padding: var(--space-5) var(--space-6);
+}
+.arch-step__n {
+  flex: 0 0 auto; width: 40px; height: 40px;
+  display: flex; align-items: center; justify-content: center; border-radius: 50%;
+  background: rgba(242, 183, 5, 0.12); border: 1px solid rgba(242, 183, 5, 0.5);
+  color: var(--color-primary); font-family: var(--font-heading); font-weight: 800;
+}
+.arch-step h4 { font-size: var(--text-base); }
+.arch-step p { font-size: var(--text-sm); color: var(--color-text-muted); margin-top: 2px; }
+
+/* --- Framed dashboard screenshots -------------------------------------- */
+.gallery { display: grid; grid-template-columns: 1fr; gap: var(--space-8); margin-top: var(--space-10); }
+.shot {
+  border: 1px solid var(--color-border); border-radius: var(--radius-lg);
+  overflow: hidden; box-shadow: var(--shadow-md); background: var(--color-surface);
+}
+.shot img { width: 100%; height: auto; display: block; }
+.shot__cap { padding: var(--space-3) var(--space-5); font-size: var(--text-sm); color: var(--color-text-muted); border-top: 1px solid var(--color-border); }
+
+/* --- Our Work index: project card grid --------------------------------- */
+.work-index-head { text-align: center; }
+.work-index-head h1 { font-size: clamp(2rem, 5vw, 3rem); letter-spacing: -0.03em; }
+.work-index-head .lede { font-size: var(--text-lg); color: var(--color-text-muted); max-width: 58ch; margin: var(--space-4) auto 0; line-height: 1.7; }
+
+.work-grid { display: grid; grid-template-columns: 1fr; gap: var(--space-6); margin-top: var(--space-12); }
+.work-card {
+  display: flex; flex-direction: column; overflow: hidden;
+  background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg);
+  text-decoration: none; color: inherit;
+  transition: border-color var(--t-base) ease, transform var(--t-base) ease, box-shadow var(--t-base) ease;
+}
+a.work-card:hover { border-color: var(--color-primary); transform: translateY(-4px); box-shadow: var(--shadow-md); }
+.work-card__media { aspect-ratio: 16 / 10; overflow: hidden; background: var(--color-surface-2); }
+.work-card__media img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform var(--t-base) ease; }
+a.work-card:hover .work-card__media img { transform: scale(1.04); }
+.work-card__media--ph { display: flex; align-items: center; justify-content: center; color: rgba(252, 252, 252, 0.4); font-size: 54px; }
+.work-card__body { display: flex; flex-direction: column; gap: var(--space-2); padding: var(--space-6); flex: 1; }
+.work-card__tag { font-size: var(--text-xs); font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-primary); }
+.work-card h3 { font-size: var(--text-xl); }
+.work-card p { font-size: var(--text-sm); color: var(--color-text-muted); line-height: 1.6; }
+.work-card__more { margin-top: auto; padding-top: var(--space-3); font-weight: 700; font-size: var(--text-sm); color: var(--color-primary); }
+.work-card--soon { opacity: 0.85; }
+.work-card--soon .work-card__tag { color: var(--color-text-dim); }
+.work-card__badge { margin-top: auto; padding-top: var(--space-3); font-size: var(--text-xs); font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-text-dim); }
+
+@media (min-width: 640px) { .work-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1000px) { .work-grid { grid-template-columns: repeat(3, 1fr); } }
+
+/* --- App-store badges (case-study result) ------------------------------ */
+.store-badges { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-4); margin-top: var(--space-8); }
+.store-badge { display: inline-flex; align-items: center; gap: var(--space-2); padding: var(--space-3) var(--space-5); border: 1px solid var(--color-border); border-radius: 999px; font-family: var(--font-heading); font-weight: 700; font-size: var(--text-sm); }
+.store-badge iconify-icon { font-size: 1.25em; color: var(--color-primary); }
+
+/* --- CTA band ----------------------------------------------------------- */
+.work-cta { text-align: center; }
+.work-cta h2 { max-width: 22ch; margin: 0 auto; }
+.work-cta .btn { margin-top: var(--space-8); }
+
+@media (min-width: 768px) {
+  .case-meta { grid-template-columns: repeat(4, 1fr); }
+  .case-split { grid-template-columns: 1.5fr 1fr; gap: var(--space-12); }
+  .case-split--rev .case-split__text { order: 2; }
+  .arch-flow { grid-template-columns: repeat(4, 1fr); align-items: stretch; }
+  .arch-step { flex-direction: column; align-items: flex-start; }
+}
