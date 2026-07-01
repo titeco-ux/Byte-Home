@@ -528,23 +528,10 @@ function debounce(fn, delay) {
   const hubs = Array.prototype.slice.call(document.querySelectorAll('[data-tech-hub]'));
   if (!hubs.length) return;
 
-  // The actual polyhedron for a given vertex count: { V: vertices, E: edges }.
-  function polyhedron(n) {
-    const q = 0.5773502691896258;  // 1/sqrt(3) — tetrahedron
-    if (n === 2) return { V: [[0,1,0],[0,-1,0]], E: [[0,1]] };                                   // axis
-    if (n === 3) return { V: [[0,0,1],[-0.866,0,-0.5],[0.866,0,-0.5]], E: [[0,1],[1,2],[2,0]] }; // triangle
-    if (n === 4) return { V: [[q,q,q],[q,-q,-q],[-q,q,-q],[-q,-q,q]],                             // tetrahedron
-                          E: [[0,1],[0,2],[0,3],[1,2],[1,3],[2,3]] };
-    if (n === 5) return { V: [[0,1,0],[0,-1,0],[1,0,0],[-0.5,0,0.866],[-0.5,0,-0.866]],           // triangular bipyramid
-                          E: [[0,2],[0,3],[0,4],[1,2],[1,3],[1,4],[2,3],[3,4],[4,2]] };
-    if (n === 6) return { V: [[1,0,0],[-1,0,0],[0,1,0],[0,-1,0],[0,0,1],[0,0,-1]],                // octahedron
-                          E: [[0,2],[0,3],[0,4],[0,5],[1,2],[1,3],[1,4],[1,5],[2,4],[2,5],[3,4],[3,5]] };
-    // fallback for any other count: even ring on a sphere
-    const V = [], E = [], g = Math.PI * (3 - Math.sqrt(5));
-    for (let i = 0; i < n; i++) { const y = n === 1 ? 0 : 1 - (i / (n - 1)) * 2; const r = Math.sqrt(Math.max(0, 1 - y * y)); const th = i * g; V.push([Math.cos(th) * r, y, Math.sin(th) * r]); }
-    for (let i = 0; i < n; i++) E.push([i, (i + 1) % n]);
-    return { V, E };
-  }
+  // Horizontal "molecule": the category icon on the left, the tech icons fanned
+  // across to the right in a zig-zag, all linked by bonds. A fixed vertical band
+  // keeps every hub the same height regardless of how many icons it holds.
+  const BAND = 190;
 
   function initHub(hub) {
     const canvas = hub.querySelector('canvas');
@@ -555,19 +542,30 @@ function debounce(fn, delay) {
     const N = verts.length;
     if (!N) return;
 
-    // Shape vertex count may exceed the icon count (data-poly-vertices): the extra
-    // vertices still draw in the wireframe but carry no icon.
-    const G = parseInt(hub.dataset.polyVertices || '', 10) || N;
-    const poly = polyhedron(G);
-    const P = poly.V;      // vertices
-    const EDG = poly.E;    // polyhedron edges
-
     const bond = (getComputedStyle(hub).getPropertyValue('--bond').trim() || '242, 183, 5');
-    const spin = parseFloat(hub.dataset.spin || '0.00022');
-    const rFactor = parseFloat(hub.dataset.radius || '0.34');
-    const TILT = 0.5;
-    let w = 0, h = 0, cx = 0, cy = 0, R = 0, pxr = 1;
-    const rot = new Array(P.length);
+    let w = 0, h = 0, cy = 0, pxr = 1;
+    const base = [];   // resting positions: index 0 = category centre, 1..N = tech icons
+    let EDG = [];
+
+    function layout() {
+      base.length = 0;
+      const padX = Math.min(w * 0.12, 56);
+      const left = padX, right = w - padX;
+      const amp = (Math.min(h, BAND) / 2) * 0.78;
+      base.push({ x: left, y: cy });                       // category icon, far left
+      const gapStart = left + 78;
+      const span = Math.max(0, right - gapStart);
+      for (let i = 0; i < N; i++) {
+        const t = N === 1 ? 0.5 : i / (N - 1);
+        const x = N === 1 ? (gapStart + right) / 2 : gapStart + t * span;
+        const y = cy + (i % 2 === 0 ? -1 : 1) * amp;
+        base.push({ x: x, y: y });
+      }
+      // bonds: category → first icon, a chain along the icons, plus one branch
+      EDG = [[0, 1]];
+      for (let i = 1; i < N; i++) EDG.push([i, i + 1]);
+      if (N >= 3) EDG.push([0, 2]);
+    }
 
     function resize() {
       pxr = Math.min(window.devicePixelRatio || 1, 2);
@@ -576,38 +574,32 @@ function debounce(fn, delay) {
       if (!w || !h) return;
       canvas.width = Math.round(w * pxr); canvas.height = Math.round(h * pxr);
       ctx.setTransform(pxr, 0, 0, pxr, 0, 0);
-      cx = w / 2; cy = h / 2; R = Math.min(w, h) * rFactor;
+      cy = h / 2;
+      layout();
     }
+
+    const pos = [];
     function frame(t) {
-      if (w && h) {
-        const ay = t * spin, cY = Math.cos(ay), sY = Math.sin(ay);
-        const cT = Math.cos(TILT), sT = Math.sin(TILT);
-        for (let i = 0; i < P.length; i++) {
-          const v = P[i];
-          const x1 = v[0] * cY + v[2] * sY;
-          const z1 = -v[0] * sY + v[2] * cY;
-          const y1 = v[1] * cT - z1 * sT;
-          const z2 = v[1] * sT + z1 * cT;
-          rot[i] = [cx + x1 * R, cy - y1 * R, z2];
+      if (w && h && base.length) {
+        for (let i = 0; i < base.length; i++) {
+          const ph = i * 1.7;
+          pos[i] = [base[i].x + Math.sin(t * 0.0009 + ph) * 5, base[i].y + Math.cos(t * 0.0011 + ph) * 6];
         }
-        if (center) { center.style.left = cx + 'px'; center.style.top = cy + 'px'; center.style.zIndex = '60'; }
+        if (center) { center.style.left = pos[0][0] + 'px'; center.style.top = pos[0][1] + 'px'; center.style.zIndex = '60'; }
         for (let i = 0; i < N; i++) {
-          const depth = (rot[i][2] + 1) / 2;
           const el = verts[i];
-          el.style.left = rot[i][0] + 'px';
-          el.style.top = rot[i][1] + 'px';
-          el.style.setProperty('--s', (0.5 + 0.55 * depth).toFixed(3));
-          el.style.opacity = (0.28 + 0.72 * depth).toFixed(3);
-          el.style.zIndex = String(Math.round(depth * 100));
+          el.style.left = pos[i + 1][0] + 'px';
+          el.style.top = pos[i + 1][1] + 'px';
+          el.style.setProperty('--s', '1');
+          el.style.opacity = '1';
         }
         ctx.clearRect(0, 0, w, h);
         ctx.lineWidth = 1.5; ctx.lineCap = 'round'; ctx.setLineDash([]);
+        ctx.strokeStyle = 'rgba(' + bond + ', 0.5)';
         for (let e = 0; e < EDG.length; e++) {
-          const a = rot[EDG[e][0]], b = rot[EDG[e][1]];
-          const vis = ((a[2] + 1) / 2 + (b[2] + 1) / 2) / 2;   // edges toward the back fade out
-          ctx.beginPath(); ctx.moveTo(a[0], a[1]); ctx.lineTo(b[0], b[1]);
-          ctx.strokeStyle = 'rgba(' + bond + ', ' + (0.12 + 0.5 * vis).toFixed(3) + ')';
-          ctx.stroke();
+          const a = pos[EDG[e][0]], b = pos[EDG[e][1]];
+          if (!a || !b) continue;
+          ctx.beginPath(); ctx.moveTo(a[0], a[1]); ctx.lineTo(b[0], b[1]); ctx.stroke();
         }
       }
       if (!reduce) requestAnimationFrame(frame);
@@ -619,4 +611,32 @@ function debounce(fn, delay) {
   }
 
   hubs.forEach(initHub);
+})();
+
+/* ---- J. Gallery lightbox ---------------------------------------------- */
+(function () {
+  const imgs = Array.prototype.slice.call(document.querySelectorAll('.gallery .shot img'));
+  if (!imgs.length) return;
+
+  const overlay = document.createElement('div');
+  overlay.className = 'lightbox';
+  overlay.setAttribute('aria-hidden', 'true');
+  overlay.innerHTML = '<button class="lightbox__close" type="button" aria-label="Close">&times;</button><img class="lightbox__img" alt="">';
+  document.body.appendChild(overlay);
+  const lbImg = overlay.querySelector('.lightbox__img');
+
+  function open(src, alt) {
+    lbImg.src = src; lbImg.alt = alt || '';
+    overlay.classList.add('is-open'); overlay.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+  function close() {
+    overlay.classList.remove('is-open'); overlay.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  imgs.forEach((img) => img.addEventListener('click', () => open(img.currentSrc || img.src, img.alt)));
+  // any click inside the overlay (backdrop, close button, or the image) closes it; Esc too
+  overlay.addEventListener('click', close);
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && overlay.classList.contains('is-open')) close(); });
 })();

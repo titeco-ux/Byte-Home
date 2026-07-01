@@ -59,13 +59,79 @@
 .arch-step p { font-size: var(--text-sm); color: var(--color-text-muted); margin-top: 2px; }
 
 /* --- Framed dashboard screenshots -------------------------------------- */
-.gallery { display: grid; grid-template-columns: 1fr; gap: var(--space-8); margin-top: var(--space-10); }
+.gallery { display: grid; grid-template-columns: 1fr; gap: var(--space-6); margin-top: var(--space-10); }
+@media (min-width: 640px) { .gallery { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1000px) { .gallery { grid-template-columns: repeat(3, 1fr); } }
 .shot {
+  display: flex; flex-direction: column;
   border: 1px solid var(--color-border); border-radius: var(--radius-lg);
   overflow: hidden; box-shadow: var(--shadow-md); background: var(--color-surface);
 }
-.shot img { width: 100%; height: auto; display: block; }
+.shot img { width: 100%; height: auto; display: block; cursor: zoom-in; }
+.shot__cap { margin-top: auto; }
+
+/* --- Lightbox (click a gallery image to enlarge) ----------------------- */
+.lightbox {
+  position: fixed; inset: 0; z-index: 200;
+  display: none; align-items: center; justify-content: center;
+  padding: var(--space-8);
+  background: rgba(15, 17, 18, 0.9); -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px);
+}
+.lightbox.is-open { display: flex; animation: lightbox-in 0.2s ease both; }
+.lightbox__img { max-width: 94vw; max-height: 88vh; width: auto; height: auto; border-radius: var(--radius-lg); box-shadow: 0 24px 70px rgba(0, 0, 0, 0.55); cursor: zoom-out; }
+.lightbox__close {
+  position: absolute; top: var(--space-4); right: var(--space-6);
+  background: none; border: none; color: #FCFCFC; font-size: 2.6rem; line-height: 1; cursor: pointer;
+}
+.lightbox__close:hover { color: var(--color-primary); }
+@keyframes lightbox-in { from { opacity: 0; } to { opacity: 1; } }
 .shot__cap { padding: var(--space-3) var(--space-5); font-size: var(--text-sm); color: var(--color-text-muted); border-top: 1px solid var(--color-border); }
+
+/* --- Homepage featured case study — full-bleed image, info on hover ----- */
+.work-feature {
+  position: relative; display: block; overflow: hidden;
+  min-height: 420px; border-radius: var(--radius-lg);
+  margin-top: var(--space-10);
+  text-decoration: none; color: var(--color-text);
+}
+.work-feature__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+.work-feature:hover .work-feature__img { transform: scale(1.04); }
+.work-feature__overlay {
+  position: absolute; inset: 0; z-index: 1;
+  display: flex; flex-direction: column; justify-content: flex-end;
+  padding: var(--space-8);
+  background: linear-gradient(to top, rgba(15, 17, 18, 0.92) 0%, rgba(15, 17, 18, 0.55) 34%, rgba(15, 17, 18, 0.04) 70%);
+  transition: background 0.4s ease;
+}
+.work-feature:hover .work-feature__overlay,
+.work-feature:focus-visible .work-feature__overlay {
+  background: linear-gradient(to top, rgba(15, 17, 18, 0.95) 0%, rgba(15, 17, 18, 0.82) 55%, rgba(15, 17, 18, 0.4) 100%);
+}
+.work-feature .case-industry { color: var(--color-primary); margin: 0 0 var(--space-2); }
+.work-feature h3 { color: #FCFCFC; font-size: var(--text-2xl); margin: 0; }
+.work-feature .case-industry, .work-feature h3, .work-feature__reveal { max-width: 640px; }
+/* hidden by default; slides up from the bottom on hover/focus */
+.work-feature__reveal {
+  max-height: 0; opacity: 0; overflow: hidden; transform: translateY(16px);
+  transition: max-height 0.55s var(--ease-out), opacity 0.4s ease, transform 0.55s var(--ease-out);
+}
+.work-feature:hover .work-feature__reveal,
+.work-feature:focus-visible .work-feature__reveal {
+  max-height: 340px; opacity: 1; transform: translateY(0); margin-top: var(--space-4);
+}
+.work-feature__reveal .work-blurb { color: rgba(252, 252, 252, 0.85); margin: 0; }
+.work-feature__reveal .work-quote { color: rgba(252, 252, 252, 0.8); border-left-color: var(--color-primary); }
+.work-feature__reveal .work-quote cite { color: #FCFCFC; }
+.work-feature__reveal .work-link { color: var(--color-primary); display: inline-block; margin-top: var(--space-3); }
+/* same treatment, smaller, inside the 3-up grid */
+.work-grid .work-feature { min-height: 340px; margin-top: 0; }
+.work-grid .work-feature .work-feature__overlay { padding: var(--space-6); }
+.work-grid .work-feature h3 { font-size: var(--text-xl); }
+/* coming-soon variant: dark card, no image, no hover reveal */
+.work-feature--soon { background: var(--color-surface); border: 1px solid var(--color-border); cursor: default; }
+.work-feature--soon .work-feature__overlay { background: linear-gradient(to top, rgba(15, 17, 18, 0.65), rgba(15, 17, 18, 0) 60%); }
+.work-feature__ph { position: absolute; top: var(--space-6); right: var(--space-6); z-index: 1; font-size: 40px; color: rgba(252, 252, 252, 0.22); }
+.work-feature__badge { margin-top: var(--space-3); font-size: var(--text-xs); font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-text-dim); }
 
 /* --- Our Work index: project card grid --------------------------------- */
 .work-index-head { text-align: center; }

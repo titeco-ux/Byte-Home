@@ -528,6 +528,53 @@
 .steps-carousel--slide .steps-dot { background-color: rgba(15, 17, 18, 0.18); }
 .steps-carousel--slide .steps-dot.is-active { background-color: var(--color-primary); }
 
+/* STACK variant — every card the same dark surface so the yellow polyhedron
+   always reads; card holds a category title, the chips, then the rotating hub. */
+.steps-carousel--stack .step,
+.steps-carousel--stack .step:nth-child(odd),
+.steps-carousel--stack .step:nth-child(even) { background-color: var(--color-surface); }
+/* Each card = two containers: text (heading + chips) and the canvas hub. */
+.steps-carousel--stack .step { align-items: center; text-align: center; gap: var(--space-6); }
+/* title always light so it contrasts the dark card (beats the slide odd/even rules) */
+.steps-carousel--stack .step h3,
+.steps-carousel--stack .step:nth-child(odd) h3,
+.steps-carousel--stack .step:nth-child(even) h3 { color: var(--color-text); }
+.steps-carousel--stack .stack-card__text {
+  display: flex; flex-direction: column; align-items: center; gap: var(--space-4); width: 100%;
+}
+.steps-carousel--stack .stack-cat {
+  display: inline-flex; align-items: center; gap: var(--space-3);
+  font-size: var(--text-xl);
+}
+.steps-carousel--stack .stack-cat__ic { width: 1.3em; height: 1.3em; fill: var(--color-primary); flex: 0 0 auto; }
+/* chips in a 2-column grid (reset the tabs-era order:-1) */
+.steps-carousel--stack .tech-list { margin: 0; order: 0; display: grid; grid-template-columns: repeat(2, auto); gap: var(--space-2) var(--space-3); justify-content: center; }
+/* chips share the card's rounded corners + dark-mode styling */
+.steps-carousel--stack .tech-list li {
+  border-radius: var(--radius-lg);
+  background-color: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.12);
+  color: var(--color-text);
+}
+/* canvas hub — fills its container's full width (no 462px cap); fixed height */
+.steps-carousel--stack .tech-hub { width: 100%; max-width: none; min-height: 240px; }
+/* the hub sits on a dark card even though the section is light: restore the
+   dark-mode bond lines and node chips */
+.section--light .steps-carousel--stack .cta-hub { --bond: 242, 183, 5; }
+.section--light .steps-carousel--stack .hub-node__dot { color: var(--color-primary); background: var(--color-bg); border-color: rgba(242, 183, 5, 0.45); }
+.section--light .steps-carousel--stack .hub-node:hover .hub-node__dot { border-color: var(--color-primary); background: rgba(242, 183, 5, 0.12); }
+.steps-carousel--stack .step.is-active .tech-hub { animation: tech-pulse 6s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) { .steps-carousel--stack .step.is-active .tech-hub { animation: none; } }
+
+/* Desktop: text container left, canvas container right.
+   (Mobile keeps them stacked — text on top, animation below.) */
+@media (min-width: 768px) {
+  .steps-carousel--stack .step { flex-direction: row; align-items: center; text-align: left; gap: var(--space-10); }
+  .steps-carousel--stack .stack-card__text { flex: 0 0 auto; width: auto; align-items: flex-start; align-self: flex-start; }
+  .steps-carousel--stack .tech-list { justify-content: start; }
+  .steps-carousel--stack .tech-hub { flex: 1 1 auto; min-height: 260px; }
+}
+
 /* nav + dots */
 .steps-nav { display: flex; align-items: center; justify-content: center; gap: var(--space-5); margin-top: var(--space-6); }
 .steps-arrow {

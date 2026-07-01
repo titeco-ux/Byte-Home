@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Work — FuseGIS: Real-Time Urban Intelligence | ByteNana</title>
+  <meta name="description" content="How ByteNana automated the ingestion and visualization of critical urban data for the Houston and Austin MSAs — a WebGIS and data pipeline built with Python, PostGIS, Ember.js, and Mapbox GL.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/page.css">
+  <link rel="stylesheet" href="css/work.css">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header id="navbar">
+    <div class="container navbar-inner">
+      <a href="index.html#hero" class="logo" aria-label="ByteNana home">
+        <img src="assets/images/logo-Bn.svg" alt="" class="logo-mark">
+        <span class="logo-byte">Byte</span><span class="logo-nana">Nana</span>
+      </a>
+      <nav aria-label="Main navigation">
+        <ul class="nav-links">
+          <li><a href="index.html#what-we-do">What we do</a></li>
+          <li><a href="index.html#how-we-engage">How we engage</a></li>
+          <li><a href="our-work.html">Work</a></li>
+          <li><a href="index.html#reviews">Reviews</a></li>
+          <li><a href="#book" class="btn btn-primary btn-sm js-book">Book a call</a></li>
+        </ul>
+      </nav>
+      <button id="menu-toggle" class="menu-toggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+      <button id="nav-toggle" class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">
+        <iconify-icon class="nav-toggle__open" icon="mdi:menu"></iconify-icon>
+        <iconify-icon class="nav-toggle__close" icon="mdi:close"></iconify-icon>
+      </button>
+    </div>
+    <nav id="mobile-menu" class="mobile-menu" aria-label="Mobile navigation">
+      <ul>
+        <li><a href="index.html#what-we-do">What we do</a></li>
+        <li><a href="index.html#how-we-engage">How we engage</a></li>
+        <li><a href="our-work.html">Work</a></li>
+        <li><a href="index.html#reviews">Reviews</a></li>
+        <li><a href="#book" class="js-book">Book a call</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="work-hero">
+      <div class="work-hero__bg" style="background-image:url('assets/work/fusegis/hero-city.png')"></div>
+      <div class="container">
+        <img class="work-hero__logo work-hero__logo--mono" src="assets/work/fusegis/client-logo.png" alt="FuseGIS">
+        <h1>Urban intelligence: scaling real-time geospatial data</h1>
+        <p class="lede">How ByteNana automated the ingestion and visualization of critical urban data for the Houston and Austin metropolitan areas.</p>
+      </div>
+    </section>
+
+    <!-- PROJECT META BAND -->
+    <section class="case-meta-band" data-nav-collapse-anchor>
+      <div class="container">
+        <div class="case-meta">
+          <div class="case-meta__item"><p class="case-meta__k">Industry</p><p class="case-meta__v">PropTech / Urban Planning</p></div>
+          <div class="case-meta__item"><p class="case-meta__k">Project type</p><p class="case-meta__v">WebGIS &amp; automated data pipeline</p></div>
+          <div class="case-meta__item"><p class="case-meta__k">Key tech</p><p class="case-meta__v">Python · PostGIS · Ember.js · Mapbox GL</p></div>
+          <div class="case-meta__item"><p class="case-meta__k">Outcome</p><p class="case-meta__v">Multi-source web scraping &amp; spatial analysis</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- THE CHALLENGE -->
+    <section>
+      <div class="container">
+        <div class="case-split">
+          <div class="case-split__text">
+            <p class="section-label">01 — The challenge</p>
+            <h2>Beyond static mapping</h2>
+            <p class="section-intro">The client's existing WebGIS was stagnant, relying on manual data updates that couldn't keep pace with the rapid development in Houston and Austin. To provide a true "source of truth," they needed a way to automatically monitor, scrape, and normalize zoning, parcel, and permit data from hundreds of disparate municipal sources into a single, high-performance platform.</p>
+          </div>
+          <div class="case-split__media">
+            <div class="case-transform">
+              <img src="assets/work/fusegis/alert-before.png" alt="Stagnant map with stale, manually-updated data" loading="lazy">
+              <span class="case-transform__arrow" aria-hidden="true">→</span>
+              <img src="assets/work/fusegis/ok-after.png" alt="Always-current source of truth" loading="lazy">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- THE SOLUTION + ARCHITECTURE -->
+    <section class="section-mesh">
+      <div class="container">
+        <p class="section-label">02 — The solution</p>
+        <h2>An engine for continuous intelligence</h2>
+        <p class="section-intro">We engineered a robust data pipeline that transforms municipal fragmentation into a competitive advantage. By building custom scrapers in Python and Node.js, we automated the collection of parcels and construction permits. This data is fed into a PostGIS spatial database and rendered via Mapbox GL, giving the client an always-current view of the urban landscape.</p>
+        <div class="arch-flow">
+          <div class="arch-step"><span class="arch-step__n">1</span><div><h4>The collectors</h4><p>Python &amp; Node.js — high-resilience scrapers that monitor and extract data from city permit and zoning portals.</p></div></div>
+          <div class="arch-step"><span class="arch-step__n">2</span><div><h4>The spatial vault</h4><p>PostGIS — a geospatial database optimized for complex polygon geometries and rapid spatial querying.</p></div></div>
+          <div class="arch-step"><span class="arch-step__n">3</span><div><h4>The interface</h4><p>Ember.js &amp; Mapbox GL — a professional-grade GIS interface rendering millions of data points with zero lag.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section>
+      <div class="container">
+        <p class="section-label">03 — Inside the platform</p>
+        <h2>The urban data ecosystem</h2>
+        <p class="section-intro">From municipal portals to high-fidelity visualization — an always-current view of parcels, permits, and zoning across entire metro areas.</p>
+        <div class="gallery">
+          <figure class="shot">
+            <img src="assets/work/fusegis/shot-parcels.png" alt="FuseGIS: parcel and permit data rendered across a metro area" loading="lazy">
+            <figcaption class="shot__cap">Parcel &amp; permit layers — millions of data points rendered across the metro with zero lag.</figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="assets/work/fusegis/shot-points.png" alt="FuseGIS: geospatial data points and market-trend overlays" loading="lazy">
+            <figcaption class="shot__cap">Live geospatial layers — new construction permits surfacing early market trends.</figcaption>
+          </figure>
+          <figure class="shot">
+            <img src="assets/work/fusegis/shot-zoning.png" alt="FuseGIS: zoning district filters and land-use analysis" loading="lazy">
+            <figcaption class="shot__cap">Zoning &amp; land-use filters — drill into districts, overlays, and parcel detail.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- KEY FEATURES -->
+    <section class="section--light">
+      <div class="container">
+        <p class="section-label">04 — Key features</p>
+        <h2>Built for high-stakes urban analysis</h2>
+        <div class="card-grid card-grid--3">
+          <div class="card"><span class="card-icon" aria-hidden="true"><iconify-icon icon="mdi:map-marker-radius-outline"></iconify-icon></span><h3>Automated MSA tracking</h3><p>Real-time updates for zoning and parcels across the entire Houston and Austin metropolitan areas.</p></div>
+          <div class="card"><span class="card-icon" aria-hidden="true"><iconify-icon icon="mdi:file-document-multiple-outline"></iconify-icon></span><h3>Permit monitoring</h3><p>Instant visibility into new construction permits, providing an early look at market trends.</p></div>
+          <div class="card"><span class="card-icon" aria-hidden="true"><iconify-icon icon="mdi:flask-outline"></iconify-icon></span><h3>Prototyping infrastructure</h3><p>A dedicated AWS-hosted environment and testing domain for rapid data-source validation.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- THE RESULT -->
+    <section class="work-cta">
+      <div class="container">
+        <p class="section-label" style="text-align:center">05 — The result</p>
+        <h2>Multi-source web scraping &amp; spatial analysis</h2>
+        <p class="section-intro" style="max-width:60ch;margin:var(--space-4) auto 0">From a stagnant, manually-updated map to an automated intelligence engine — a single source of truth that keeps pace with two of the fastest-growing metros in the US.</p>
+        <p class="store-badges">
+          <span class="store-badge"><iconify-icon icon="mdi:map-marker"></iconify-icon> Houston MSA</span>
+          <span class="store-badge"><iconify-icon icon="mdi:map-marker"></iconify-icon> Austin MSA</span>
+        </p>
+      </div>
+    </section>
+
+    <!-- TECHNOLOGIES -->
+    <section>
+      <div class="container">
+        <p class="section-label">06 — Technologies used</p>
+        <h2>The geospatial stack</h2>
+        <div class="card-grid card-grid--2-4">
+          <div class="card card--invert"><span class="card-icon" aria-hidden="true"><iconify-icon icon="simple-icons:python"></iconify-icon></span><h3>Python / Node.js</h3><p>For scalable and resilient web-scraping logic.</p></div>
+          <div class="card card--invert"><span class="card-icon" aria-hidden="true"><iconify-icon icon="simple-icons:postgresql"></iconify-icon></span><h3>PostGIS</h3><p>For industry-standard geospatial data integrity.</p></div>
+          <div class="card card--invert"><span class="card-icon" aria-hidden="true"><iconify-icon icon="simple-icons:mapbox"></iconify-icon></span><h3>Mapbox GL</h3><p>For high-performance, GPU-accelerated map rendering.</p></div>
+          <div class="card card--invert"><span class="card-icon" aria-hidden="true"><iconify-icon icon="simple-icons:amazonwebservices"></iconify-icon></span><h3>AWS</h3><p>For a stable, cloud-based testing and production environment.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section--light work-cta">
+      <div class="container">
+        <p class="section-label" style="text-align:center">We turn municipal fragmentation into a competitive advantage.</p>
+        <h2>Ready to automate your data intelligence?</h2>
+        <a href="#book" class="btn btn-primary js-book">Schedule a consultation →</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer id="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <a href="index.html#hero" class="logo" aria-label="ByteNana home">
+          <img src="assets/images/logo-Bn.svg" alt="" class="logo-mark">
+          <span class="logo-byte">Byte</span><span class="logo-nana">Nana</span>
+        </a>
+        <p>Engineering resilience. Scaling ambition. AI-native nearshore engineering for US startups and agencies.</p>
+      </div>
+      <div class="footer-col">
+        <p class="section-label">Projects</p>
+        <nav class="footer-nav" aria-label="Projects">
+          <a href="work.html">IIoT — Multotec</a>
+          <a href="p2-genostories.html">Mobile — GenoStories</a>
+          <a href="our-work.html">All case studies</a>
+        </nav>
+      </div>
+      <div class="footer-col">
+        <p class="section-label">Company</p>
+        <nav class="footer-nav" aria-label="Company">
+          <a href="index.html#hero">Home</a>
+          <a href="index.html#why">About us</a>
+          <a href="our-work.html">Our work</a>
+          <a href="#book" class="js-book">Contact us</a>
+        </nav>
+      </div>
+      <div class="footer-col">
+        <p class="section-label">Connect</p>
+        <div class="footer-social">
+          <a href="#" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="#" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+      <p class="footer-legal section-label">© 2026 ByteNana</p>
+    </div>
+  </footer>
+
+  <!-- Booking modal -->
+  <div id="booking-modal" class="booking-modal" hidden data-booking-url="https://calendar.google.com/calendar/u/0/r">
+    <div class="booking-modal__backdrop" data-close></div>
+    <div class="booking-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="booking-modal-title">
+      <button class="booking-modal__close" type="button" aria-label="Close" data-close>&times;</button>
+      <h3 id="booking-modal-title">Let's get you on the calendar</h3>
+      <p class="booking-modal__intro">Drop your name and email and we'll take you straight to our booking calendar.</p>
+      <form id="booking-form" class="booking-form" name="booking" method="POST" data-netlify="true" netlify-honeypot="bot-field" novalidate>
+        <input type="hidden" name="form-name" value="booking">
+        <p class="hidden" hidden><label>Don't fill this out: <input name="bot-field"></label></p>
+        <div class="form-group"><label for="book-name">Name</label><input type="text" id="book-name" name="name" placeholder="Your name" required autocomplete="name"></div>
+        <div class="form-group"><label for="book-email">Work Email</label><input type="email" id="book-email" name="email" placeholder="you@company.com" required autocomplete="email"></div>
+        <button type="submit" class="btn btn-primary btn-full">Continue to calendar →</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="https://code.iconify.design/iconify-icon/2.3.0/iconify-icon.min.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/page.js"></script>
+</body>
+</html>

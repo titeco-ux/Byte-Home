@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/components.css">
   <link rel="stylesheet" href="css/page.css">
+  <link rel="stylesheet" href="css/work.css">
 </head>
 <body>
 
@@ -170,21 +171,83 @@
       </div>
     </section>
 
-    <!-- 04 — WHERE DO YOU NEED US? (chooser cards double as tabs for the engagement details) -->
+    <!-- 04 — SELECTED WORK -->
+    <section id="work" class="section--light">
+      <div class="container">
+        <p class="section-label">04 — Selected work</p>
+        <h2>Proof, not promises.</h2>
+        <p class="section-intro">A few of the products we've helped build, launch, and scale.</p>
+
+        <!-- Featured case study: StructureIQ (alone on its row, image fills card, info reveals on hover) -->
+        <a class="work-feature" href="p6-structureiq.html">
+          <img class="work-feature__img" src="assets/work/structureiq/hero-bridge.png" alt="StructureIQ AI structural monitoring" loading="lazy">
+          <div class="work-feature__overlay">
+            <p class="case-industry">SaaS · InsurTech</p>
+            <h3>StructureIQ</h3>
+            <div class="work-feature__reveal">
+              <p class="work-blurb">A structural-health-monitoring SaaS platform — we built the web app and system architecture and helped scale delivery sprint over sprint.</p>
+              <blockquote class="work-quote">"The entire ByteNana team have been a pleasure to work with, far surpassing our initial expectations — like working alongside a partner actively invested in our success."<cite>— CTO, StructureIQ</cite></blockquote>
+              <span class="work-link">Read case study →</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Three more projects from Our Work — same full-bleed hover-reveal treatment -->
+        <div class="work-grid">
+          <a class="work-feature" href="work.html">
+            <img class="work-feature__img" src="assets/work/multotec/hero-mine.png" alt="Multotec industrial mining">
+            <div class="work-feature__overlay">
+              <p class="case-industry">IIoT · Industrial Mining</p>
+              <h3>Multotec</h3>
+              <div class="work-feature__reveal">
+                <p class="work-blurb">Sensor-to-cloud IIoT predictive maintenance on ESP32, C++/FreeRTOS, ThingsBoard, and Angular.</p>
+                <span class="work-link">Read case study →</span>
+              </div>
+            </div>
+          </a>
+          <a class="work-feature" href="p2-genostories.html">
+            <img class="work-feature__img" src="assets/work/genostories/hero-family.png" alt="GenoStories family heritage">
+            <div class="work-feature__overlay">
+              <p class="case-industry">Social · Genealogy</p>
+              <h3>GenoStories</h3>
+              <div class="work-feature__reveal">
+                <p class="work-blurb">A bug-ridden Flutter/Laravel app rebuilt and shipped to the App Store and Google Play.</p>
+                <span class="work-link">Read case study →</span>
+              </div>
+            </div>
+          </a>
+          <a class="work-feature" href="p3-nessfertigation.html">
+            <img class="work-feature__img" src="assets/work/nessfertigation/hero-field.png" alt="NESS Fertigation precision agriculture">
+            <div class="work-feature__overlay">
+              <p class="case-industry">AgTech · Industrial IoT</p>
+              <h3>NESS Fertigation</h3>
+              <div class="work-feature__reveal">
+                <p class="work-blurb">Multi-tenant SaaS for precision agriculture driving real-time pump and sensor automation.</p>
+                <span class="work-link">Read case study →</span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <p style="text-align:right;margin-top:var(--space-8)"><a href="our-work.html" class="work-link">View all case studies →</a></p>
+      </div>
+    </section>
+
+    <!-- 05 — WHERE DO YOU NEED US? (chooser cards double as tabs for the engagement details) -->
     <section id="how-we-engage" class="section--light">
       <div class="container">
-        <p class="section-label">04 — Where do you need us?</p>
+        <p class="section-label">05 — Where do you need us?</p>
         <h2>Where do you need us?</h2>
         <p class="section-intro">Two ways to bring senior Brazilian engineers onto your project — same talent bar, either way.</p>
 
         <div class="chooser-grid" role="tablist" aria-label="Engagement models">
           <div class="chooser-card is-active" role="tab" id="engtab-staff" aria-controls="engpanel-staff" aria-selected="true" tabindex="0" data-tab="staff">
-            <span class="chooser-eyebrow">IT Staffing · Staff Augmentation</span>
-            <h3>Staff for your team</h3>
+            <span class="chooser-eyebrow">IT Staffing · Embedded engineers</span>
+            <h3>Staff Augmentation</h3>
           </div>
           <div class="chooser-card" role="tab" id="engtab-product" aria-controls="engpanel-product" aria-selected="false" tabindex="-1" data-tab="product">
-            <span class="chooser-eyebrow">Product Teams · End-to-end delivery</span>
-            <h3>A team for your product</h3>
+            <span class="chooser-eyebrow">End-to-end delivery</span>
+            <h3>Product teams</h3>
           </div>
         </div>
 
@@ -192,48 +255,50 @@
           <!-- TAB 1 — Staff Augmentation -->
           <div class="engage-panel is-active" role="tabpanel" id="engpanel-staff" aria-labelledby="engtab-staff" data-panel="staff">
             <div class="engage-body">
-              <div class="engage-col">
-                <div class="engage-points">
-                  <div class="card"><h4>What you get</h4><p>Vetted senior engineers who plug into your stack, standups, and sprints. You direct the day-to-day; we deliver inside your cadence.</p></div>
-                  <div class="card"><h4>Real-time, not offshore</h4><p>Full US-hours overlap from Brazil. Same-day collaboration, not async hand-offs.</p></div>
-                  <div class="card"><h4>Scale on demand</h4><p>Add or drop engineers as projects flex, without breaking delivery.</p></div>
-                  <div class="card"><h4>Agency-ready</h4><p>White-label by default. Your client sees your team; they never see us.</p></div>
-                </div>
-                <div class="engage-foot">
-                  <div class="engage-foot__text">
-                    <p class="engage-how"><strong>How it works:</strong> a short matching call → engineers onboarded into your repo and tools → they ship in your sprint cadence with clear reporting.</p>
-                    <p class="engage-price"><strong>Pricing:</strong> from ~$32/hr per embedded engineer; senior/architect at $50–60/hr — month-to-month or committed.</p>
-                  </div>
-                  <a href="#book" class="btn btn-primary js-book">Book a discovery call</a>
-                </div>
-              </div>
               <div class="engage-media">
                 <img src="assets/photos/H2.png" alt="A senior ByteNana engineer embedded in a client team" loading="lazy">
               </div>
+              <div class="engage-col">
+                <h3 class="engage-title">Staff your team</h3>
+                <ul class="talent-list engage-list">
+                  <li><span class="talent-check" aria-hidden="true">✓</span><span><strong>What you get</strong> — Vetted senior engineers who plug into your stack, standups, and sprints. You direct the day-to-day; we deliver inside your cadence.</span></li>
+                  <li><span class="talent-check" aria-hidden="true">✓</span><span><strong>Real-time, not offshore</strong> — Full US-hours overlap from Brazil. Same-day collaboration, not async hand-offs.</span></li>
+                  <li><span class="talent-check" aria-hidden="true">✓</span><span><strong>Scale on demand</strong> — Add or drop engineers as projects flex, without breaking delivery.</span></li>
+                  <li><span class="talent-check" aria-hidden="true">✓</span><span><strong>Agency-ready</strong> — White-label by default. Your client sees your team; they never see us.</span></li>
+                </ul>
+              </div>
+            </div>
+            <div class="engage-foot">
+              <div class="engage-foot__text">
+                <p class="engage-how"><strong>How it works:</strong> a short matching call → engineers onboarded into your repo and tools → they ship in your sprint cadence with clear reporting.</p>
+                <p class="engage-price"><strong>Pricing:</strong> from ~$32/hr per embedded engineer; senior/architect at $50–60/hr — month-to-month or committed.</p>
+              </div>
+              <a href="#book" class="btn btn-primary js-book">Book a discovery call</a>
             </div>
           </div>
 
           <!-- TAB 2 — Product Teams -->
           <div class="engage-panel" role="tabpanel" id="engpanel-product" aria-labelledby="engtab-product" data-panel="product" hidden>
             <div class="engage-body">
-              <div class="engage-col">
-                <div class="engage-points">
-                  <div class="card"><h4>What you get</h4><p>A self-managed pod (tech lead, engineers, and design) that takes the vision from discovery to launch and owns delivery end to end.</p></div>
-                  <div class="card"><h4>AI-accelerated scoping</h4><p>Spec-driven discovery on our own AI framework, so the work is scoped precisely before a line of code.</p></div>
-                  <div class="card"><h4>Built to scale</h4><p>Architecture designed to grow from 100 to 1M users.</p></div>
-                  <div class="card"><h4>Transparent by default</h4><p>Weekly demos, clear milestones, no black boxes. White-label delivery for agencies.</p></div>
-                </div>
-                <div class="engage-foot">
-                  <div class="engage-foot__text">
-                    <p class="engage-how"><strong>How it works:</strong> discovery → we assemble the right team → we build in sprints with demos and milestones → launch and iterate.</p>
-                    <p class="engage-price"><strong>Pricing:</strong> fixed-price by scope, or a monthly team retainer.</p>
-                  </div>
-                  <a href="#book" class="btn btn-primary js-book">Book a discovery call</a>
-                </div>
-              </div>
               <div class="engage-media">
                 <img src="assets/photos/H1.png" alt="A ByteNana product team collaborating end to end" loading="lazy">
               </div>
+              <div class="engage-col">
+                <h3 class="engage-title">A team for your product</h3>
+                <ul class="talent-list engage-list">
+                  <li><span class="talent-check" aria-hidden="true">✓</span><span><strong>What you get</strong> — A self-managed pod (tech lead, engineers, and design) that takes the vision from discovery to launch and owns delivery end to end.</span></li>
+                  <li><span class="talent-check" aria-hidden="true">✓</span><span><strong>AI-accelerated scoping</strong> — Spec-driven discovery on our own AI framework, so the work is scoped precisely before a line of code.</span></li>
+                  <li><span class="talent-check" aria-hidden="true">✓</span><span><strong>Built to scale</strong> — Architecture designed to grow from 100 to 1M users.</span></li>
+                  <li><span class="talent-check" aria-hidden="true">✓</span><span><strong>Transparent by default</strong> — Weekly demos, clear milestones, no black boxes. White-label delivery for agencies.</span></li>
+                </ul>
+              </div>
+            </div>
+            <div class="engage-foot">
+              <div class="engage-foot__text">
+                <p class="engage-how"><strong>How it works:</strong> discovery → we assemble the right team → we build in sprints with demos and milestones → launch and iterate.</p>
+                <p class="engage-price"><strong>Pricing:</strong> fixed-price by scope, or a monthly team retainer.</p>
+              </div>
+              <a href="#book" class="btn btn-primary js-book">Book a discovery call</a>
             </div>
           </div>
         </div>
@@ -261,164 +326,10 @@
       </div>
     </section>
 
-    <!-- 07 — WHY BYTENANA -->
-    <section id="why">
-      <div class="container">
-        <p class="section-label">07 — Why ByteNana</p>
-        <h2>We've removed the friction from tech outsourcing by focusing on the four things that matter most.</h2>
-        <div class="card-grid card-grid--2-4">
-          <div class="card card--invert"><h3>Real-time, not offshore</h3><p>Brazil sits in full overlap with US business hours. Same-day collaboration in your standup — not async hand-offs twelve hours behind.</p></div>
-          <div class="card card--invert"><h3>Consultants first, developers second</h3><p>A small, hand-picked team that solves the business problem, not just closes the ticket.</p></div>
-          <div class="card card--invert"><h3>Built to scale</h3><p>Architecture designed to grow from 100 to 1M users, delivered in agile sprints with constant iteration.</p></div>
-          <div class="card card--invert"><h3>Transparent by default</h3><p>No black boxes. Full visibility into the work, the progress, and every line of code.</p></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 08 — TECH STACK (orbit tabs) -->
-    <section id="tech-stack" class="section-techstack section--light">
-      <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
-        <symbol id="ic-frontend" viewBox="0 0 24 24"><path d="M21 2H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h7v2H8v2h8v-2h-2v-2h7c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H3V4h18v12z"/></symbol>
-        <symbol id="ic-backend" viewBox="0 0 24 24"><path d="M2 20h20v-4H2v4zm2-3h2v2H4v-2zM2 4v4h20V4H2zm4 3H4V5h2v2zm-4 7h20v-4H2v4zm2-3h2v2H4v-2z"/></symbol>
-        <symbol id="ic-data" viewBox="0 0 24 24"><path d="M4 9h4v11H4V9zm6-5h4v16h-4V4zm6 8h4v8h-4v-8z"/></symbol>
-        <symbol id="ic-cloud" viewBox="0 0 24 24"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/></symbol>
-        <symbol id="ic-mobile" viewBox="0 0 24 24"><path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/></symbol>
-        <symbol id="ic-ai" viewBox="0 0 24 24"><path d="M15 9H9v6h6V9zm-2 4h-2v-2h2v2zm8-2V9h-2V7c0-1.1-.9-2-2-2h-2V3h-2v2h-2V3H9v2H7c-1.1 0-2 .9-2 2v2H3v2h2v2H3v2h2v2c0 1.1.9 2 2 2h2v2h2v-2h2v2h2v-2h2c1.1 0 2-.9 2-2v-2h2v-2h-2v-2h2zm-4 6H7V7h10v10z"/></symbol>
-      </svg>
-      <div class="container">
-        <h2>Your vision. Our tech stack.</h2>
-        <p class="section-intro">From high-performance mobile apps to complex cloud architectures, we bring the right tools to solve your unique business challenges.</p>
-        <div class="stack-tabs">
-          <div class="stack-tablist" role="tablist" aria-label="Tech stack categories">
-            <button class="stack-tab is-active" role="tab" aria-selected="true" id="tab-frontend" aria-controls="panel-frontend"><svg class="stack-tab__ic" aria-hidden="true"><use href="#ic-frontend"/></svg><span>Frontend</span></button>
-            <button class="stack-tab" role="tab" aria-selected="false" id="tab-backend" aria-controls="panel-backend"><svg class="stack-tab__ic" aria-hidden="true"><use href="#ic-backend"/></svg><span>Backend</span></button>
-            <button class="stack-tab" role="tab" aria-selected="false" id="tab-data" aria-controls="panel-data"><svg class="stack-tab__ic" aria-hidden="true"><use href="#ic-data"/></svg><span>Data &amp; ML</span></button>
-            <button class="stack-tab" role="tab" aria-selected="false" id="tab-cloud" aria-controls="panel-cloud"><svg class="stack-tab__ic" aria-hidden="true"><use href="#ic-cloud"/></svg><span>Cloud &amp; DevOps</span></button>
-            <button class="stack-tab" role="tab" aria-selected="false" id="tab-mobile" aria-controls="panel-mobile"><svg class="stack-tab__ic" aria-hidden="true"><use href="#ic-mobile"/></svg><span>Mobile</span></button>
-            <button class="stack-tab" role="tab" aria-selected="false" id="tab-ai" aria-controls="panel-ai"><svg class="stack-tab__ic" aria-hidden="true"><use href="#ic-ai"/></svg><span>AI</span></button>
-          </div>
-          <div class="stack-panels">
-            <div class="stack-panel is-active" role="tabpanel" id="panel-frontend" aria-labelledby="tab-frontend">
-              <div class="tech-hub cta-hub" data-tech-hub data-radius="0.34">
-                <canvas class="cta-hub__links" aria-hidden="true"></canvas>
-                <span class="hub-node hub-node--center"><span class="hub-node__depth"><span class="hub-node__hover"><span class="hub-node__dot"><iconify-icon icon="mdi:application-brackets-outline"></iconify-icon></span></span></span></span>
-                <span class="hub-node"><span class="hub-node__depth"><span class="hub-node__hover"><span class="hub-node__dot"><iconify-icon icon="simple-icons:react"></iconify-icon></span></span></span></span>
-                <span class="hub-node"><span class="hub-node__depth"><span class="hub-node__hover"><span class="hub-node__dot"><iconify-icon icon="simple-icons:nextdotjs"></iconify-icon></span></span></span></span>
-                <span class="hub-node"><span class="hub-node__depth"><span class="hub-node__hover"><span class="hub-node__dot"><iconify-icon icon="simple-icons:javascript"></iconify-icon></span></span></span></span>
-                <span class="hub-node"><span class="hub-node__depth"><span class="hub-node__hover"><span class="hub-node__dot"><iconify-icon icon="simple-icons:typescript"></iconify-icon></span></span></span></span>
-              </div>
-              <ul class="tech-list"><li>React</li><li>Next.js</li><li>JavaScript</li><li>TypeScript</li></ul>
-            </div>
-            <div class="stack-panel" role="tabpanel" id="panel-backend" aria-labelledby="tab-backend" hidden>
-              <div class="tech-hub cta-hub" data-tech-hub data-radius="0.34" data-poly-vertices="4">
-                <canvas class="cta-hub__links" aria-hidden="true"></canvas>
-                <span class="hub-node hub-node--center"><span class="hub-node__depth"><span class="hub-node__hover"><span class="hub-node__dot"><iconify-icon icon="mdi:server-outline"></iconify-icon></span></span></span></span>
-                <span class="hub-node"><span class="hub-node__depth"><span class="hub-node__hover"><span class="hub-node__dot"><iconify-icon icon="simple-icons:nodedotjs"></iconify-icon></span></span></span></span>
-                <span class="hub-node"><span class="hub-node__depth"><span class="hub-node__hover"><span class="hub-node__dot"><iconify-icon icon="simple-icons:spring"></iconify-icon></span></span></span></span>
-                <span class="hub-node"><span class="hub-node__depth"><span class="hub-node__hover"><span class="hub-node__dot"><iconify-icon icon="simple-icons:express"></iconify-icon></span></span></span></span>
-              </div>
-              <ul class="tech-list"><li>Node.js</li><li>Java / Spring</li><li>Express</li></ul>
-            </div>
-            <div class="stack-panel" role="tabpanel" id="panel-data" aria-labelledby="tab-data" hidden>
-              <div class="tech-hub cta-hub" data-tech-hub data-radius="0.36">
-                <canvas class="cta-hub__links" aria-hidden="true"></canvas>
-                <span class="hub-node hub-node--center"><span class="hub-node__depth"><span class="hub-node__hover"><span class="hub-node__dot"><iconify-icon icon="mdi:chart-scatter-plot"></iconify-icon></span></span></span></span>
-                <span class="hub-node"><span class="hub-node__depth"><span class="hub-node__hover"><span class="hub-node__dot"><iconify-icon icon="simple-icons:python"></iconify-icon></span></span></span></span>
-                <span class="hub-node"><span class="hub-node__depth"><span class="hub-node__hover"><span class="hub-node__dot"><iconify-icon icon="simple-icons:postgresql"></iconify-icon></span></span></span></span>
-                <span class="hub-node"><span class="hub-node__depth"><span class="hub-node__hover"><span class="hub-node__dot"><iconify-icon icon="mdi:map-marker-radius"></iconify-icon></span></span></span></span>
-                <span class="hub-node"><span class="hub-node__depth"><span class="hub-node__hover"><span class="hub-node__dot"><iconify-icon icon="simple-icons:apachespark"></iconify-icon></span></span></span></span>
-                <span class="hub-node"><span class="hub-node__depth"><span class="hub-node__hover"><span class="hub-node__dot"><iconify-icon icon="simple-icons:apacheairflow"></iconify-icon></span></span></span></span>
-                <span class="hub-node"><span class="hub-node__depth"><span class="hub-node__hover"><span class="hub-node__dot"><iconify-icon icon="simple-icons:snowflake"></iconify-icon></span></span></span></span>
-              </div>
-              <ul class="tech-list"><li>Python</li><li>PostgreSQL</li><li>PostGIS</li><li>Spark</li><li>Airflow</li><li>Snowflake</li></ul>
-            </div>
-            <div class="stack-panel" role="tabpanel" id="panel-cloud" aria-labelledby="tab-cloud" hidden>
-              <div class="tech-hub cta-hub" data-tech-hub data-radius="0.35">
-                <canvas class="cta-hub__links" aria-hidden="true"></canvas>
-                <span class="hub-node hub-node--center"><span class="hub-node__depth"><span class="hub-node__hover"><span class="hub-node__dot"><iconify-icon icon="mdi:cloud-outline"></iconify-icon></span></span></span></span>
-                <span class="hub-node"><span class="hub-node__depth"><span class="hub-node__hover"><span class="hub-node__dot"><iconify-icon icon="simple-icons:amazonwebservices"></iconify-icon></span></span></span></span>
-                <span class="hub-node"><span class="hub-node__depth"><span class="hub-node__hover"><span class="hub-node__dot"><iconify-icon icon="simple-icons:googlecloud"></iconify-icon></span></span></span></span>
-                <span class="hub-node"><span class="hub-node__depth"><span class="hub-node__hover"><span class="hub-node__dot"><iconify-icon icon="simple-icons:microsoftazure"></iconify-icon></span></span></span></span>
-                <span class="hub-node"><span class="hub-node__depth"><span class="hub-node__hover"><span class="hub-node__dot"><iconify-icon icon="simple-icons:docker"></iconify-icon></span></span></span></span>
-                <span class="hub-node"><span class="hub-node__depth"><span class="hub-node__hover"><span class="hub-node__dot"><iconify-icon icon="simple-icons:kubernetes"></iconify-icon></span></span></span></span>
-              </div>
-              <ul class="tech-list"><li>AWS</li><li>GCP</li><li>Azure</li><li>Docker</li><li>Kubernetes</li></ul>
-            </div>
-            <div class="stack-panel" role="tabpanel" id="panel-mobile" aria-labelledby="tab-mobile" hidden>
-              <div class="tech-hub cta-hub" data-tech-hub data-radius="0.34" data-poly-vertices="4">
-                <canvas class="cta-hub__links" aria-hidden="true"></canvas>
-                <span class="hub-node hub-node--center"><span class="hub-node__depth"><span class="hub-node__hover"><span class="hub-node__dot"><iconify-icon icon="mdi:cellphone"></iconify-icon></span></span></span></span>
-                <span class="hub-node"><span class="hub-node__depth"><span class="hub-node__hover"><span class="hub-node__dot"><iconify-icon icon="simple-icons:flutter"></iconify-icon></span></span></span></span>
-                <span class="hub-node"><span class="hub-node__depth"><span class="hub-node__hover"><span class="hub-node__dot"><iconify-icon icon="simple-icons:react"></iconify-icon></span></span></span></span>
-              </div>
-              <ul class="tech-list"><li>Flutter</li><li>React Native</li></ul>
-            </div>
-            <div class="stack-panel" role="tabpanel" id="panel-ai" aria-labelledby="tab-ai" hidden>
-              <div class="tech-hub cta-hub" data-tech-hub data-radius="0.35">
-                <canvas class="cta-hub__links" aria-hidden="true"></canvas>
-                <span class="hub-node hub-node--center"><span class="hub-node__depth"><span class="hub-node__hover"><span class="hub-node__dot"><iconify-icon icon="mdi:brain"></iconify-icon></span></span></span></span>
-                <span class="hub-node"><span class="hub-node__depth"><span class="hub-node__hover"><span class="hub-node__dot"><iconify-icon icon="simple-icons:openai"></iconify-icon></span></span></span></span>
-                <span class="hub-node"><span class="hub-node__depth"><span class="hub-node__hover"><span class="hub-node__dot"><iconify-icon icon="simple-icons:langchain"></iconify-icon></span></span></span></span>
-                <span class="hub-node"><span class="hub-node__depth"><span class="hub-node__hover"><span class="hub-node__dot"><iconify-icon icon="mdi:database-search"></iconify-icon></span></span></span></span>
-                <span class="hub-node"><span class="hub-node__depth"><span class="hub-node__hover"><span class="hub-node__dot"><iconify-icon icon="mdi:cube-outline"></iconify-icon></span></span></span></span>
-                <span class="hub-node"><span class="hub-node__depth"><span class="hub-node__hover"><span class="hub-node__dot"><iconify-icon icon="simple-icons:n8n"></iconify-icon></span></span></span></span>
-              </div>
-              <ul class="tech-list"><li>OpenAI / GPT-4</li><li>LangChain</li><li>RAG</li><li>Pinecone</li><li>n8n</li></ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 09 — AI-NATIVE ENGINEERING -->
-    <section id="ai-native" class="section-mesh">
-      <div class="container">
-        <p class="section-label" style="text-align:center">09 — AI-native engineering</p>
-        <h2 style="text-align:center;max-width:640px;margin:0 auto">AI-capable, not buzzword.</h2>
-        <p class="section-intro" style="text-align:center;max-width:660px;margin-left:auto;margin-right:auto">Most shops list a few AI tools and call it a day. We bring our own AI engineering framework and a spec-driven approach to scoping and building.</p>
-        <div class="card-grid card-grid--2-4">
-          <div class="card card--invert"><span class="card-icon"><iconify-icon icon="mdi:hexagon-outline"></iconify-icon></span><h3>Our own framework</h3><p>A spec-driven AI engineering approach to scoping and building — not a few tools bolted on.</p></div>
-          <div class="card card--invert"><span class="card-icon"><iconify-icon icon="mdi:brain"></iconify-icon></span><h3>Real LLM stack</h3><p>We build with RAG, GPT-4 and other LLMs, LangChain, and n8n — production AI, not demos.</p></div>
-          <div class="card card--invert"><span class="card-icon"><iconify-icon icon="mdi:radar"></iconify-icon></span><h3>AI-powered discovery</h3><p>We scope the work precisely with AI before a single line of code, so estimates hold up.</p></div>
-          <div class="card card--invert"><span class="card-icon"><iconify-icon icon="mdi:rocket-launch-outline"></iconify-icon></span><h3>Fast prototyping</h3><p>Rapid AI prototyping for your product — validate ideas in days, not sprints. And we level your team up on it.</p></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 10 — SELECTED WORK -->
-    <section id="work" class="section--light">
-      <div class="container">
-        <p class="section-label">10 — Selected work</p>
-        <h2>Proof, not promises.</h2>
-        <p class="section-intro">A few of the products we've helped build, launch, and scale.</p>
-        <div class="work-grid">
-          <article class="card work-card">
-            <p class="case-industry">SaaS</p>
-            <h3>Structure IQ</h3>
-            <p class="work-blurb">A structural-health-monitoring SaaS platform — we built the web app and system architecture and helped scale delivery sprint over sprint.</p>
-            <blockquote class="work-quote">"The entire ByteNana team have been a pleasure to work with, far surpassing our initial expectations — like working alongside a partner actively invested in our success."<cite>— CTO, Structure IQ</cite></blockquote>
-            <a href="#" class="work-link">View case study →</a>
-          </article>
-          <article class="card work-card">
-            <p class="case-industry">IIoT</p>
-            <h3>Hawkeye</h3>
-            <p class="work-blurb">An industrial IoT monitoring system — we delivered the data pipeline and dashboards that turn sensor streams into real-time operational insight.</p>
-            <a href="#" class="work-link">View case study →</a>
-          </article>
-          <article class="card work-card">
-            <p class="case-industry">AI</p>
-            <h3>Findly</h3>
-            <p class="work-blurb">An AI-native product — we engineered the RAG and LLM features at its core, from spec-driven discovery through to a production launch.</p>
-            <a href="#" class="work-link">View case study →</a>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- 11 — REVIEWS & RATINGS -->
+    <!-- 07 — REVIEWS & RATINGS -->
     <section id="reviews" class="section-proof section--light">
       <div class="container">
-        <p class="section-label">11 — Reviews &amp; ratings</p>
+        <p class="section-label">07 — Reviews &amp; ratings</p>
         <h2>Verified, not self-proclaimed.</h2>
         <p class="section-intro">119 projects delivered · 100% Job Success on Upwork · Top Rated Plus (top 3% of talent) · 5.0 on Clutch.</p>
 
@@ -452,10 +363,160 @@
       </div>
     </section>
 
-    <!-- 12 — HOW WE WORK -->
+    <!-- 08 — WHY BYTENANA -->
+    <section id="why">
+      <div class="container">
+        <p class="section-label">08 — Why ByteNana</p>
+        <h2>We've removed the friction from tech outsourcing by focusing on the four things that matter most.</h2>
+        <div class="card-grid card-grid--2-4">
+          <div class="card card--invert"><h3>Real-time, not offshore</h3><p>Brazil sits in full overlap with US business hours. Same-day collaboration in your standup — not async hand-offs twelve hours behind.</p></div>
+          <div class="card card--invert"><h3>Consultants first, developers second</h3><p>A small, hand-picked team that solves the business problem, not just closes the ticket.</p></div>
+          <div class="card card--invert"><h3>Built to scale</h3><p>Architecture designed to grow from 100 to 1M users, delivered in agile sprints with constant iteration.</p></div>
+          <div class="card card--invert"><h3>Transparent by default</h3><p>No black boxes. Full visibility into the work, the progress, and every line of code.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 08 — TECH STACK (orbit tabs) -->
+    <section id="tech-stack" class="section-techstack section--light">
+      <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+        <symbol id="ic-frontend" viewBox="0 0 24 24"><path d="M21 2H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h7v2H8v2h8v-2h-2v-2h7c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H3V4h18v12z"/></symbol>
+        <symbol id="ic-backend" viewBox="0 0 24 24"><path d="M2 20h20v-4H2v4zm2-3h2v2H4v-2zM2 4v4h20V4H2zm4 3H4V5h2v2zm-4 7h20v-4H2v4zm2-3h2v2H4v-2z"/></symbol>
+        <symbol id="ic-data" viewBox="0 0 24 24"><path d="M4 9h4v11H4V9zm6-5h4v16h-4V4zm6 8h4v8h-4v-8z"/></symbol>
+        <symbol id="ic-cloud" viewBox="0 0 24 24"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/></symbol>
+        <symbol id="ic-mobile" viewBox="0 0 24 24"><path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/></symbol>
+        <symbol id="ic-ai" viewBox="0 0 24 24"><path d="M15 9H9v6h6V9zm-2 4h-2v-2h2v2zm8-2V9h-2V7c0-1.1-.9-2-2-2h-2V3h-2v2h-2V3H9v2H7c-1.1 0-2 .9-2 2v2H3v2h2v2H3v2h2v2c0 1.1.9 2 2 2h2v2h2v-2h2v2h2v-2h2c1.1 0 2-.9 2-2v-2h2v-2h-2v-2h2zm-4 6H7V7h10v10z"/></symbol>
+      </svg>
+      <div class="container">
+        <h2>Tech stack</h2>
+        <div class="steps steps-carousel steps-carousel--slide steps-carousel--stack" id="stack-carousel">
+          <div class="steps-viewport"><div class="steps-track">
+
+            <div class="step is-active" role="group" aria-roledescription="slide" aria-label="AI">
+              <div class="stack-card__text">
+                <h3 class="stack-cat"><svg class="stack-cat__ic" aria-hidden="true"><use href="#ic-ai"/></svg>AI</h3>
+                <ul class="tech-list"><li>OpenAI / GPT-4</li><li>LangChain</li><li>RAG</li><li>Pinecone</li><li>n8n</li></ul>
+              </div>
+              <div class="tech-hub cta-hub" data-tech-hub>
+                <canvas class="cta-hub__links" aria-hidden="true"></canvas>
+                <span class="hub-node hub-node--center"><span class="hub-node__depth"><span class="hub-node__hover"><span class="hub-node__dot"><iconify-icon icon="mdi:brain"></iconify-icon></span></span></span></span>
+                <span class="hub-node"><span class="hub-node__depth"><span class="hub-node__hover"><span class="hub-node__dot"><iconify-icon icon="simple-icons:openai"></iconify-icon></span></span></span></span>
+                <span class="hub-node"><span class="hub-node__depth"><span class="hub-node__hover"><span class="hub-node__dot"><iconify-icon icon="simple-icons:langchain"></iconify-icon></span></span></span></span>
+                <span class="hub-node"><span class="hub-node__depth"><span class="hub-node__hover"><span class="hub-node__dot"><iconify-icon icon="mdi:database-search"></iconify-icon></span></span></span></span>
+                <span class="hub-node"><span class="hub-node__depth"><span class="hub-node__hover"><span class="hub-node__dot"><iconify-icon icon="mdi:cube-outline"></iconify-icon></span></span></span></span>
+                <span class="hub-node"><span class="hub-node__depth"><span class="hub-node__hover"><span class="hub-node__dot"><iconify-icon icon="simple-icons:n8n"></iconify-icon></span></span></span></span>
+              </div>
+            </div>
+
+            <div class="step" role="group" aria-roledescription="slide" aria-label="Frontend">
+              <div class="stack-card__text">
+                <h3 class="stack-cat"><svg class="stack-cat__ic" aria-hidden="true"><use href="#ic-frontend"/></svg>Frontend</h3>
+                <ul class="tech-list"><li>React</li><li>Next.js</li><li>JavaScript</li><li>TypeScript</li></ul>
+              </div>
+              <div class="tech-hub cta-hub" data-tech-hub>
+                <canvas class="cta-hub__links" aria-hidden="true"></canvas>
+                <span class="hub-node hub-node--center"><span class="hub-node__depth"><span class="hub-node__hover"><span class="hub-node__dot"><iconify-icon icon="mdi:application-brackets-outline"></iconify-icon></span></span></span></span>
+                <span class="hub-node"><span class="hub-node__depth"><span class="hub-node__hover"><span class="hub-node__dot"><iconify-icon icon="simple-icons:react"></iconify-icon></span></span></span></span>
+                <span class="hub-node"><span class="hub-node__depth"><span class="hub-node__hover"><span class="hub-node__dot"><iconify-icon icon="simple-icons:nextdotjs"></iconify-icon></span></span></span></span>
+                <span class="hub-node"><span class="hub-node__depth"><span class="hub-node__hover"><span class="hub-node__dot"><iconify-icon icon="simple-icons:javascript"></iconify-icon></span></span></span></span>
+                <span class="hub-node"><span class="hub-node__depth"><span class="hub-node__hover"><span class="hub-node__dot"><iconify-icon icon="simple-icons:typescript"></iconify-icon></span></span></span></span>
+              </div>
+            </div>
+
+            <div class="step" role="group" aria-roledescription="slide" aria-label="Backend">
+              <div class="stack-card__text">
+                <h3 class="stack-cat"><svg class="stack-cat__ic" aria-hidden="true"><use href="#ic-backend"/></svg>Backend</h3>
+                <ul class="tech-list"><li>Node.js</li><li>Java / Spring</li><li>Express</li></ul>
+              </div>
+              <div class="tech-hub cta-hub" data-tech-hub>
+                <canvas class="cta-hub__links" aria-hidden="true"></canvas>
+                <span class="hub-node hub-node--center"><span class="hub-node__depth"><span class="hub-node__hover"><span class="hub-node__dot"><iconify-icon icon="mdi:server-outline"></iconify-icon></span></span></span></span>
+                <span class="hub-node"><span class="hub-node__depth"><span class="hub-node__hover"><span class="hub-node__dot"><iconify-icon icon="simple-icons:nodedotjs"></iconify-icon></span></span></span></span>
+                <span class="hub-node"><span class="hub-node__depth"><span class="hub-node__hover"><span class="hub-node__dot"><iconify-icon icon="simple-icons:spring"></iconify-icon></span></span></span></span>
+                <span class="hub-node"><span class="hub-node__depth"><span class="hub-node__hover"><span class="hub-node__dot"><iconify-icon icon="simple-icons:express"></iconify-icon></span></span></span></span>
+              </div>
+            </div>
+
+            <div class="step" role="group" aria-roledescription="slide" aria-label="Data &amp; ML">
+              <div class="stack-card__text">
+                <h3 class="stack-cat"><svg class="stack-cat__ic" aria-hidden="true"><use href="#ic-data"/></svg>Data &amp; ML</h3>
+                <ul class="tech-list"><li>Python</li><li>PostgreSQL</li><li>PostGIS</li><li>Spark</li><li>Airflow</li><li>Snowflake</li></ul>
+              </div>
+              <div class="tech-hub cta-hub" data-tech-hub>
+                <canvas class="cta-hub__links" aria-hidden="true"></canvas>
+                <span class="hub-node hub-node--center"><span class="hub-node__depth"><span class="hub-node__hover"><span class="hub-node__dot"><iconify-icon icon="mdi:chart-scatter-plot"></iconify-icon></span></span></span></span>
+                <span class="hub-node"><span class="hub-node__depth"><span class="hub-node__hover"><span class="hub-node__dot"><iconify-icon icon="simple-icons:python"></iconify-icon></span></span></span></span>
+                <span class="hub-node"><span class="hub-node__depth"><span class="hub-node__hover"><span class="hub-node__dot"><iconify-icon icon="simple-icons:postgresql"></iconify-icon></span></span></span></span>
+                <span class="hub-node"><span class="hub-node__depth"><span class="hub-node__hover"><span class="hub-node__dot"><iconify-icon icon="mdi:map-marker-radius"></iconify-icon></span></span></span></span>
+                <span class="hub-node"><span class="hub-node__depth"><span class="hub-node__hover"><span class="hub-node__dot"><iconify-icon icon="simple-icons:apachespark"></iconify-icon></span></span></span></span>
+                <span class="hub-node"><span class="hub-node__depth"><span class="hub-node__hover"><span class="hub-node__dot"><iconify-icon icon="simple-icons:apacheairflow"></iconify-icon></span></span></span></span>
+                <span class="hub-node"><span class="hub-node__depth"><span class="hub-node__hover"><span class="hub-node__dot"><iconify-icon icon="simple-icons:snowflake"></iconify-icon></span></span></span></span>
+              </div>
+            </div>
+
+            <div class="step" role="group" aria-roledescription="slide" aria-label="Cloud &amp; DevOps">
+              <div class="stack-card__text">
+                <h3 class="stack-cat"><svg class="stack-cat__ic" aria-hidden="true"><use href="#ic-cloud"/></svg>Cloud &amp; DevOps</h3>
+                <ul class="tech-list"><li>AWS</li><li>GCP</li><li>Azure</li><li>Docker</li><li>Kubernetes</li></ul>
+              </div>
+              <div class="tech-hub cta-hub" data-tech-hub>
+                <canvas class="cta-hub__links" aria-hidden="true"></canvas>
+                <span class="hub-node hub-node--center"><span class="hub-node__depth"><span class="hub-node__hover"><span class="hub-node__dot"><iconify-icon icon="mdi:cloud-outline"></iconify-icon></span></span></span></span>
+                <span class="hub-node"><span class="hub-node__depth"><span class="hub-node__hover"><span class="hub-node__dot"><iconify-icon icon="simple-icons:amazonwebservices"></iconify-icon></span></span></span></span>
+                <span class="hub-node"><span class="hub-node__depth"><span class="hub-node__hover"><span class="hub-node__dot"><iconify-icon icon="simple-icons:googlecloud"></iconify-icon></span></span></span></span>
+                <span class="hub-node"><span class="hub-node__depth"><span class="hub-node__hover"><span class="hub-node__dot"><iconify-icon icon="simple-icons:microsoftazure"></iconify-icon></span></span></span></span>
+                <span class="hub-node"><span class="hub-node__depth"><span class="hub-node__hover"><span class="hub-node__dot"><iconify-icon icon="simple-icons:docker"></iconify-icon></span></span></span></span>
+                <span class="hub-node"><span class="hub-node__depth"><span class="hub-node__hover"><span class="hub-node__dot"><iconify-icon icon="simple-icons:kubernetes"></iconify-icon></span></span></span></span>
+              </div>
+            </div>
+
+            <div class="step" role="group" aria-roledescription="slide" aria-label="Mobile">
+              <div class="stack-card__text">
+                <h3 class="stack-cat"><svg class="stack-cat__ic" aria-hidden="true"><use href="#ic-mobile"/></svg>Mobile</h3>
+                <ul class="tech-list"><li>Flutter</li><li>React Native</li></ul>
+              </div>
+              <div class="tech-hub cta-hub" data-tech-hub>
+                <canvas class="cta-hub__links" aria-hidden="true"></canvas>
+                <span class="hub-node hub-node--center"><span class="hub-node__depth"><span class="hub-node__hover"><span class="hub-node__dot"><iconify-icon icon="mdi:cellphone"></iconify-icon></span></span></span></span>
+                <span class="hub-node"><span class="hub-node__depth"><span class="hub-node__hover"><span class="hub-node__dot"><iconify-icon icon="simple-icons:flutter"></iconify-icon></span></span></span></span>
+                <span class="hub-node"><span class="hub-node__depth"><span class="hub-node__hover"><span class="hub-node__dot"><iconify-icon icon="simple-icons:react"></iconify-icon></span></span></span></span>
+              </div>
+            </div>
+
+          </div></div>
+          <div class="steps-nav">
+            <div class="steps-dots" role="tablist" aria-label="Tech stack categories">
+              <button class="steps-dot is-active" type="button" data-step="0" aria-label="AI"></button>
+              <button class="steps-dot" type="button" data-step="1" aria-label="Frontend"></button>
+              <button class="steps-dot" type="button" data-step="2" aria-label="Backend"></button>
+              <button class="steps-dot" type="button" data-step="3" aria-label="Data & ML"></button>
+              <button class="steps-dot" type="button" data-step="4" aria-label="Cloud & DevOps"></button>
+              <button class="steps-dot" type="button" data-step="5" aria-label="Mobile"></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 09 — AI-NATIVE ENGINEERING -->
+    <section id="ai-native" class="section-mesh">
+      <div class="container">
+        <p class="section-label" style="text-align:center">09 — AI-native engineering</p>
+        <h2 style="text-align:center;max-width:640px;margin:0 auto">AI-capable, not buzzword.</h2>
+        <p class="section-intro" style="text-align:center;max-width:660px;margin-left:auto;margin-right:auto">Most shops list a few AI tools and call it a day. We bring our own AI engineering framework and a spec-driven approach to scoping and building.</p>
+        <div class="card-grid card-grid--2-4">
+          <div class="card card--invert"><span class="card-icon"><iconify-icon icon="mdi:hexagon-outline"></iconify-icon></span><h3>Our own framework</h3><p>A spec-driven AI engineering approach to scoping and building — not a few tools bolted on.</p></div>
+          <div class="card card--invert"><span class="card-icon"><iconify-icon icon="mdi:brain"></iconify-icon></span><h3>Real LLM stack</h3><p>We build with RAG, GPT-4 and other LLMs, LangChain, and n8n — production AI, not demos.</p></div>
+          <div class="card card--invert"><span class="card-icon"><iconify-icon icon="mdi:radar"></iconify-icon></span><h3>AI-powered discovery</h3><p>We scope the work precisely with AI before a single line of code, so estimates hold up.</p></div>
+          <div class="card card--invert"><span class="card-icon"><iconify-icon icon="mdi:rocket-launch-outline"></iconify-icon></span><h3>Fast prototyping</h3><p>Rapid AI prototyping for your product — validate ideas in days, not sprints. And we level your team up on it.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10 — HOW WE WORK -->
     <section id="how-we-work" class="section-howwework">
       <div class="container">
-        <p class="section-label" style="text-align:center">12 — How we work</p>
+        <p class="section-label" style="text-align:center">10 — How we work</p>
         <h2 style="text-align:center;max-width:640px;margin:0 auto">From discovery to launch — no overhead.</h2>
         <p class="section-intro" style="text-align:center;max-width:640px;margin-left:auto;margin-right:auto">We've refined our workflow to get your project from the first call to a successful launch without the friction.</p>
         <div class="steps steps-carousel" id="how-carousel">
@@ -505,7 +566,7 @@
           <span class="hub-node hub-node--sm" data-lon="95" data-lat="62"><span class="hub-node__depth"><span class="hub-node__hover"><span class="hub-node__dot"><iconify-icon icon="mdi:vuejs"></iconify-icon></span></span></span></span>
         </div>
         <div class="cta-content">
-          <p class="section-label">13 — Let's talk</p>
+          <p class="section-label">11 — Let's talk</p>
           <h2>Let's accelerate your digital roadmap.</h2>
           <p class="section-intro">Tell us what you're building. We'll match you with the right senior team — fast.</p>
           <form id="contact-form" class="contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" novalidate>
