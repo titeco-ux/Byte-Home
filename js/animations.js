@@ -272,6 +272,7 @@ function debounce(fn, delay) {
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
     const nodes = Array.prototype.slice.call(hub.querySelectorAll('.hub-node'));
+    const centerEl = hub.querySelector('.hero-hub__logo');
 
     const PHI = (1 + Math.sqrt(5)) / 2;
     const NRM = Math.hypot(1, PHI, 0);
@@ -338,6 +339,8 @@ function debounce(fn, delay) {
       for (let i = 0; i < nz.length; i++) { if (nz[i] > maxNz) maxNz = nz[i]; }
       if (maxNz <= 0) maxNz = 1;
       ctx.clearRect(0, 0, w, h);
+      // ByteNana logo pinned to the centre of the polyhedron
+      if (centerEl) { centerEl.style.left = cx + 'px'; centerEl.style.top = cy + 'px'; }
       // faces at 10% (front only) — kept subtle so the edges read clearly on top
       ctx.setLineDash([]);
       F.forEach((f, fi) => {

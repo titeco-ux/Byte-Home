@@ -212,7 +212,6 @@
   function render(time) {
     ctx.clearRect(0, 0, w, h);
     drawRim();
-    drawDots();
     if (polys) drawOutlines();
     drawRoutes();
     drawPulses(time);
